@@ -1,0 +1,8 @@
+layers,participation_ratio,pca_dim_99,pca_dim_995,pca_dim_999,ae_dim_99,minimum_training_samples,test_r2_mean_at_crossing,test_r2_std_at_crossing,threshold_status,display_requirement,min_parameters_r2_99,capacity_status,capacity_note
+8,2.358282,9,11,14,5,1000.0,0.9987280410107654,0.000145666674538,left_censored_at_1000,"≤1,000",17736.0,resolved,full capacity sweep
+10,3.148455,14,16,21,6,1000.0,0.9942875895832004,0.0005300705597928,left_censored_at_1000,"≤1,000",17864.0,resolved,full capacity sweep
+12,4.200912,19,23,31,8,2000.0,0.9937514370206468,0.000475688977988,resolved_on_grid,"2,000",60488.0,resolved,full capacity sweep
+14,5.357589,26,31,43,10,4000.0,0.9923978503382423,0.0001877302353207,resolved_on_grid,"4,000",77256.0,resolved,targeted high-capacity sweep
+16,6.619628,34,40,59,14,10000.0,0.9939870050563272,0.0001882506335088,resolved_on_grid,"10,000",253128.0,resolved,targeted high-capacity sweep
+18,7.933762,43,52,79,20,15000.0,0.9904244887903126,0.00032883011879,resolved_on_grid,"15,000",701768.0,resolved,targeted high-capacity sweep
+20,9.275467,53,66,101,30,30000.0,0.9907458168192916,0.0002857220878595,resolved_on_grid,"30,000",,right_censored,no tested fixed-50k architecture reached mean R2>=0.99
