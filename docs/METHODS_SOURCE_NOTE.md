@@ -1,22 +1,21 @@
-# Methods source note from the dissertation
+# Verified methods source note
 
-The dissertation provides the following source-supported description of the multilayer simulations used as the basis for the multilayer datasets:
+The multilayer dataset-generation convention is now verified from the archived MATLAB source file `data_generation/multlayer_metamat_generation_old.m` and by numerical comparison with the analyzed response CSVs.
 
-> The multilayer systems are one-dimensional N-layer thin-film filters composed of alternating titania (TiO2) and silica (SiO2) layers. The design variables are the individual layer thicknesses, each varied over 30–70 nm. The optical response is the transmission spectrum, calculated using a custom Python implementation of the transfer-matrix method (TMM). The dissertation describes the calculation over a wavelength interval of 300–750 nm and depicts illumination perpendicular to the layer planes with transmission evaluated on the opposite side of the stack.
+## Verified historical generator
 
-Source: *Machine Learning Approaches for Knowledge Discovery in Nanophotonic Structures*, Chapter 2, Sec. 2.1 (multilayer thin films), especially dissertation pp. 14–16 / PDF pp. 31–33.
+- alternating design entries assigned `epsilon_SiO2 = 1.46` and `epsilon_TiO2 = 5.913`;
+- `mu = 1`, `sigma = 0`;
+- thickness entries sampled between 30 and 70 nm;
+- normal incidence (`theta = 0°`);
+- legacy polarization flag `p = 1`;
+- 200 uniformly spaced **frequency** points from **250 to 1050 THz**;
+- stored label `abs(taot)`, the magnitude of the legacy field-transmission coefficient.
 
-## What the dissertation does not document clearly enough
+The historical MATLAB loop propagates only `1:(N-1)` thicknesses before applying an interface into material `N`. Consequently, the final sampled thickness does not affect the stored label.
 
-Do **not** infer these items from the thesis alone:
+The Python translation in `data_generation/generate_legacy_multilayer.py` reproduces the archived labels when supplied with the stored design matrices, within the small round-trip differences caused by the historical CSV precision.
 
-- numerical refractive-index values or an explicit TiO2/SiO2 dispersion formula;
-- polarization used for the multilayer TMM calculation;
-- exact refractive index/material of the incident and exit semi-infinite media;
-- any alternative spectral range stated elsewhere in the current manuscript.
+## Manuscript consequence
 
-Those details should be copied from the exact dataset-generation code used for this paper.
-
-## Spectral-range discrepancy to resolve
-
-The dissertation states **300–750 nm** for the multilayer transmission calculation. Earlier working versions of this paper referred to **350–750 THz**. These are not equivalent. The final manuscript and public repository must use the range and sampling convention verified from the actual simulation code/dataset-generation record.
+This verified source overrides earlier thesis prose/table summaries that referred to 300–750 nm or 350–750 nm. Those ranges do not describe the actual response CSVs analyzed in this paper.

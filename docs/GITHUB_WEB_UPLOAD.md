@@ -4,12 +4,20 @@
 2. Suggested repository name: `nanophotonic-response-manifold-learning-resources`.
 3. Choose **Public** only when the manuscript/data release is ready; otherwise start **Private**.
 4. Do not initialize the repository with another README, license, or `.gitignore` because this package already contains them.
-5. Extract the ZIP package on your computer.
-6. Open the new GitHub repository and choose **Add file → Upload files**.
-7. Drag the **contents of the repository folder** into the upload area, preserving the folders.
-8. Use a commit message such as:
-   `Initial reproducibility release for ACS Photonics manuscript`
-9. After upload, edit `README.md` and `CITATION.cff` in GitHub to replace the DOI/URL placeholders once available.
-10. Create a GitHub release (for example `v1.0.0`) when the repository is frozen for submission. Archive that release with Zenodo if you want a DOI for the code release.
+5. Extract the repository ZIP on your computer.
+6. Open the new repository and choose **Add file → Upload files**.
+7. Upload the repository contents while preserving the folder structure.
+8. Commit with a message such as `Reproducibility release v1.1.0`.
+9. Run or inspect `scripts/verify_repository.py` locally before creating the public release.
+10. Create a tagged release, preferably `v1.1.0`.
 
-Do not upload the raw multi-hundred-megabyte datasets directly to GitHub. Link to the external data DOI instead.
+## Exact raw CSVs without a separate data DOI
+
+If you do not want a separate raw-data DOI, attach the two prepared raw-data ZIP files to the GitHub **Release**, not to normal Git history:
+
+- `Paper1_50k_RawData.zip`
+- `Paper1_20L_200k_RawData.zip`
+
+Release assets are appropriate for these large files; the normal repository should remain code/document focused. After the release is public, use the release URL in the manuscript's Data and Code Availability statement.
+
+The repository itself already contains the compressed exact design matrices and the historical response generator. The release assets provide the exact archived response CSVs for byte-level reproduction.

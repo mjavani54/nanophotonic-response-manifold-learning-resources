@@ -1,37 +1,34 @@
-# Raw data
+# Data and regeneration assets
 
-Raw simulation CSV files are intentionally excluded from GitHub because of their size.
+The repository includes the exact **stored design matrices** used by the paper in compressed form:
 
-## Primary 50k multilayer datasets
+`data/exact_designs/paper1_exact_designs.npz`
 
-The analysis expects design (`DS`) and response (`RS`) matrices for 8, 10, 12, 14, 16, 18, and 20 layers. The original file naming convention is documented in `dataset_manifest.csv`.
+Keys:
 
-For the 50k datasets:
+- `L8_50k`
+- `L10_50k`
+- `L12_50k`
+- `L14_50k`
+- `L16_50k`
+- `L18_50k`
+- `L20_50k`
+- `L20_200k`
 
-- `DS`: one design variable per layer; 50,000 samples.
-- `RS`: 200 spectral response values; 50,000 samples.
+Each array is stored in the same orientation used by the historical CSV files: `(design variables, samples)`, with thickness values in meters.
 
-The scripts accept either samples-by-features or features-by-samples orientation where implemented and orient arrays internally.
+## Response labels
 
-## Extended 20-layer dataset
+The historical response definition can be regenerated with:
 
-The extended 20-layer study uses 200,000 total design-response samples. The raw 200k CSV files should also be archived externally.
-
-## Recommended public release
-
-1. Deposit the raw CSV files in Zenodo or another DOI-bearing repository.
-2. Include file-level checksums in the data record.
-3. Add the DOI to the root `README.md` and `CITATION.cff`.
-4. Do not add the raw CSVs to Git history.
-
-## Local layout
-
-```text
-data/raw/
-  SiO2_TiO2_8_layer_50K_200_points_DS.csv
-  SiO2_TiO2_8_layer_50K_200_points_RS.csv
-  ...
-  SiO2_TiO2_20_layer_50K_200_points_DS.csv
-  SiO2_TiO2_20_layer_50K_200_points_RS.csv
-  # plus the externally archived 20-layer 200k DS/RS pair
+```bash
+python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L8_50k   --out-dir generated/L8
 ```
+
+See `data_generation/README.md` for the exact historical TMM convention.
+
+## Exact archived response CSVs
+
+For byte-level reproduction of the original downstream analysis, the original rounded response CSVs should be attached to a tagged GitHub Release rather than committed to Git history. The repository's generator reproduces the same historical numerical definition, but small differences can occur when recomputing from the stored rounded design values because the original unrounded random thickness values were not archived separately.
+
+A separate DOI-bearing raw-data repository is therefore optional if the exact raw CSV ZIP files are distributed as GitHub Release assets together with a tagged code release.

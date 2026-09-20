@@ -1,0 +1,3 @@
+# Suggested manuscript data/code availability statement
+
+All code required to regenerate the multilayer response labels and reproduce the reported analyses is publicly available in the accompanying GitHub repository. The repository includes the exact stored design matrices used in the study, the original MATLAB dataset-generation source, a validated Python translation of the historical transfer-matrix response calculation, frozen analysis outputs, and the scripts used to produce the reported dimensionality, capacity, and learning-curve results. Because the design matrices and deterministic response generator are included directly with the repository, no separate raw-data archive is required for reproduction of the study workflow.

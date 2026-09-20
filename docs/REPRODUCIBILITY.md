@@ -1,85 +1,68 @@
 # Reproducibility workflow
 
-The final manuscript combines several experiments. Reproduce them in the following order.
-
-## 1. Intrinsic dimensionality
-
-Run the corrected intrinsic-dimensionality pipeline on the 50k multilayer datasets.
+## 0. Verify the dataset generator
 
 ```bash
-python code/paper1_intrinsic_dimensionality_pipeline_fixed.py \
-  --zip "YOUR_50K_DATASET.zip" \
-  --mode full
+python data_generation/validate_legacy_generator.py
 ```
 
-This analysis provides participation ratio, PCA dimensions, nonlinear AE reconstruction curves, and initial capacity/learning-curve diagnostics.
+The original MATLAB source and a Python translation are included under `data_generation/`.
 
-## 2. Targeted high-capacity diagnostic
+## 1. Rebuild the historical response labels
 
-Use the 50k datasets to test whether the larger structures are limited by model capacity.
+The exact stored design matrices used in the study are included under `data/exact_designs/`.
+
+Example:
 
 ```bash
-python code/paper1_high_capacity_diagnostic.py \
-  --zip "YOUR_50K_DATASET.zip" \
-  --out paper1_capacity_diagnostic
+python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L8_50k   --out-dir generated/L8
 ```
 
-## 3. 20-layer optimization diagnostic
+Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct the full 50k and extended 20-layer archives.
 
-Hold the best 20-layer architecture fixed and test whether optimizer/training choices resolve the 50k plateau.
+## 2. Intrinsic dimensionality
 
 ```bash
-python code/paper1_20layer_optimization_diagnostic.py \
-  --zip "YOUR_50K_DATASET.zip" \
-  --out paper1_20layer_optimization
+python code/paper1_intrinsic_dimensionality_pipeline_fixed.py   --zip generated/Datasets50k_regenerated.zip   --mode full
 ```
 
-## 4. Extended 20-layer 200k learning curve
+## 3. Targeted high-capacity diagnostic
 
 ```bash
-python code/paper1_20layer_200k_learning_curve.py \
-  --zip "YOUR_20L_200K_DATASET.zip" \
-  --out paper1_20layer_200k_learning_curve
+python code/paper1_high_capacity_diagnostic.py   --zip generated/Datasets50k_regenerated.zip   --out paper1_capacity_diagnostic
 ```
 
-The primary extended training sizes are 10k, 20k, 30k, 50k, 75k, 100k, 150k, and 180k, with validation/test holdouts.
-
-## 5. Controlled cross-structure learning curves
+## 4. 20-layer optimization diagnostic
 
 ```bash
-python code/paper1_cross_structure_learning_curves_fixed.py \
-  --zip-small "YOUR_50K_DATASET.zip" \
-  --zip-20 "YOUR_20L_200K_DATASET.zip" \
-  --out paper1_cross_structure_learning_curves
+python code/paper1_20layer_optimization_diagnostic.py   --zip generated/Datasets50k_regenerated.zip   --out paper1_20layer_optimization
 ```
 
-This is the main controlled sample-complexity experiment. Fixed capacity-appropriate architectures are used for each layer count.
-
-## 6. Low-sample refinement
+## 5. Extended 20-layer 200k learning curve
 
 ```bash
-python code/paper1_low_sample_refinement.py \
-  --zip-small "YOUR_50K_DATASET.zip" \
-  --out paper1_low_sample_refinement
+python code/paper1_20layer_200k_learning_curve.py   --zip generated/Datasets20_regenerated.zip   --out paper1_20layer_200k_learning_curve
 ```
 
-This resolves the low-sample regime for 8–14 layers using 1k–5k training samples.
+## 6. Controlled cross-structure learning curves
 
-## 7. Final frozen outputs
+```bash
+python code/paper1_cross_structure_learning_curves_fixed.py   --zip-small generated/Datasets50k_regenerated.zip   --zip-20 generated/Datasets20_regenerated.zip   --out paper1_cross_structure_learning_curves
+```
 
-The paper-level consolidated CSV files are provided under `results/`. They include:
+## 7. Low-sample refinement
 
-- `final_master_summary.csv`
-- `final_correlation_statistics.csv`
-- `final_learning_curves.csv`
-- `left_censoring_sensitivity.csv`
-- `Table1_final_complexity_resource_summary.csv`
+```bash
+python code/paper1_low_sample_refinement.py   --zip-small generated/Datasets50k_regenerated.zip   --out paper1_low_sample_refinement
+```
 
-The figures in `figures/` were generated from these final outputs.
+## 8. Frozen final outputs
+
+The paper-level consolidated CSV files are under `results/`. These are the exact frozen statistics reported in the manuscript.
 
 ## Reproducibility conventions
 
-- Three seeds are used in the final neural-learning experiments.
+- Three training seeds are used in the final neural-learning experiments.
 - Validation and test sets remain held out from model fitting.
 - Standardization statistics are estimated from the current training subset only in the controlled learning-curve experiments.
 - Training subsets are nested within seed-specific permutations.

@@ -1,9 +1,9 @@
-dataset,layer_count,samples,design_variables,response_points,design_file,response_file,in_github,notes
-multilayer_8L_50k,8,50000,8,200,SiO2_TiO2_8_layer_50K_200_points_DS.csv,SiO2_TiO2_8_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_10L_50k,10,50000,10,200,SiO2_TiO2_10_layer_50K_200_points_DS.csv,SiO2_TiO2_10_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_12L_50k,12,50000,12,200,SiO2_TiO2_12_layer_50K_200_points_DS.csv,SiO2_TiO2_12_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_14L_50k,14,50000,14,200,SiO2_TiO2_14_layer_50K_200_points_DS.csv,SiO2_TiO2_14_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_16L_50k,16,50000,16,200,SiO2_TiO2_16_layer_50K_200_points_DS.csv,SiO2_TiO2_16_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_18L_50k,18,50000,18,200,SiO2_TiO2_18_layer_50K_200_points_DS.csv,SiO2_TiO2_18_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_20L_50k,20,50000,20,200,SiO2_TiO2_20_layer_50K_200_points_DS.csv,SiO2_TiO2_20_layer_50K_200_points_RS.csv,no,primary dataset
-multilayer_20L_200k,20,200000,20,200,REPLACE_WITH_20L_200K_DS_FILENAME.csv,REPLACE_WITH_20L_200K_RS_FILENAME.csv,no,extended learning-curve dataset; confirm final filenames before release
+dataset,layer_count,samples,design_variables,response_points,design_archive_key,response_source,notes
+multilayer_8L_50k,8,50000,8,200,L8_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_10L_50k,10,50000,10,200,L10_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_12L_50k,12,50000,12,200,L12_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_14L_50k,14,50000,14,200,L14_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_16L_50k,16,50000,16,200,L16_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_18L_50k,18,50000,18,200,L18_50k,data_generation/generate_legacy_multilayer.py,primary dataset
+multilayer_20L_50k,20,50000,20,200,L20_50k,data_generation/generate_legacy_multilayer.py,primary 50k dataset
+multilayer_20L_200k,20,200000,20,200,L20_200k,data_generation/generate_legacy_multilayer.py,extended learning-curve dataset
