@@ -37,6 +37,7 @@ The wording **minimum tested** is intentional. The resource thresholds were eval
 ├── results/              Frozen CSV tables used for final statistics
 ├── scripts/              Repository verification helper
 ├── supplementary/        Supporting-information notes
+├── CHECKSUMS.sha256
 ├── CITATION.cff
 ├── LICENSE
 ├── environment.yml
@@ -45,16 +46,16 @@ The wording **minimum tested** is intentional. The resource thresholds were eval
 
 ## Response convention and source provenance
 
-The author reports that the analyzed datasets were generated using Python. The repository contains an older MATLAB source file, `data_generation/multlayer_metamat_generation_old.m`, and a later Python reconstruction of that numerical convention. It does not currently identify the specific Python script executed to make the archived response CSVs. Agreement with selected response fixtures supports the documented label convention but does not prove source-code identity or full-archive equality.
+The author reports that the analyzed datasets were generated using Python. The repository contains an older MATLAB reference file, `data_generation/multlayer_metamat_generation_old.m`, and a later Python reconstruction of the documented numerical convention. The specific original Python program executed to generate the archived response CSVs has not been identified. Agreement with selected response fixtures supports the documented label convention but does not establish source-code identity or full-archive equality.
 
 The reconstructed historical label convention uses:
 
-- 200 **uniform frequency** samples from **250 to 1050 THz**;
+- 200 **uniform-frequency** samples from **250 to 1050 THz**;
 - normal incidence (`theta = 0°`);
 - the legacy parallel-polarization flag (`p = 1`);
 - alternating material parameters `epsilon_SiO2 = 1.46` and `epsilon_TiO2 = 5.913`, with `mu = 1` and `sigma = 0`;
-- sampled thickness entries from **30 to 70 nm**;
-- stored response `abs(t_legacy)`, i.e. the magnitude of the historical field-transmission coefficient.
+- sampled thickness entries from **30 to 70 nm**; and
+- stored response `abs(t_legacy)`, the magnitude of the historical field-transmission coefficient.
 
 The reconstructed implementation propagates the first `N-1` thicknesses and then applies an interface into the `N`th material. Consequently, the final sampled thickness is present in the design vector but does not affect the response under this documented convention. This behavior is preserved in the reproduction code.
 
@@ -64,23 +65,31 @@ This is **not** a corrected finite-stack power-transmittance solver. The reposit
 
 `data/exact_designs/paper1_exact_designs.npz` contains the design matrices used in the reported analyses:
 
-- 8, 10, 12, 14, 16, 18, and 20 entries × 50,000 designs;
+- 8, 10, 12, 14, 16, 18, and 20 entries × 50,000 designs; and
 - the separate 20-entry × 200,000-design ensemble used for the extended learning curve.
 
-The archived design CSVs were stored at limited decimal precision. Recomputed responses can differ from the exact archived response CSVs. `data_generation/validate_legacy_generator.py` checks selected archived label fixtures; it does not verify every archived response or reproduce the exact input matrices used by the downstream analyses.
+The archived design CSVs were stored at limited decimal precision. Recomputed responses can therefore differ from the exact archived response CSVs. `data_generation/validate_legacy_generator.py` checks selected archived label fixtures; it does not verify every archived response or establish identity with the original data-generation source.
 
 Example:
 
 ```bash
 python data_generation/validate_legacy_generator.py
 
-python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L14_50k   --out-dir generated/L14
+python data_generation/generate_legacy_multilayer.py \
+  --design-npz data/exact_designs/paper1_exact_designs.npz \
+  --key L14_50k \
+  --out-dir generated/L14
 ```
 
-A new statistically equivalent ensemble can also be generated with an explicit seed:
+A new statistically comparable ensemble can also be generated with an explicit seed:
 
 ```bash
-python data_generation/generate_legacy_multilayer.py   --new-designs --layers 14 --samples 50000 --seed 20260918   --out-dir generated/L14_new
+python data_generation/generate_legacy_multilayer.py \
+  --new-designs \
+  --layers 14 \
+  --samples 50000 \
+  --seed 20260918 \
+  --out-dir generated/L14_new
 ```
 
 The new-design option does not reconstruct the random-number-generator state used for the archived datasets.
@@ -99,7 +108,7 @@ A CUDA-enabled PyTorch installation is strongly recommended for the neural-netwo
 
 ## Reproducing the analysis
 
-For exact numerical reproduction, obtain the archived response CSVs used in the paper and run the analysis scripts in the order documented in `docs/REPRODUCIBILITY.md`. They are not yet published in this repository or a release. Generated responses from the stored rounded designs are suitable for checking the documented convention, subject to numerical differences.
+For exact numerical reproduction, download the archived design and response CSVs from [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) and run the analysis scripts in the order documented in `docs/REPRODUCIBILITY.md`. Generated responses from the stored rounded designs are suitable for checking the documented convention, subject to the numerical differences described above.
 
 The core scripts are:
 
@@ -112,20 +121,29 @@ The core scripts are:
 
 Frozen final outputs are included under `results/` so readers can inspect the reported statistics without rerunning the full GPU workflow.
 
+## Public data release
+
+The exact archived design and response CSVs used for the reported analyses are public as assets of [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0):
+
+| Asset | Contents | SHA-256 |
+|---|---|---|
+| `Paper1_50k_RawData.zip` | Exact 8–20 layer, 50,000-sample design and response CSVs used in the primary analyses | `8a4406d8d470d8c56f424baf835097606d2742eea10e6a1ba7b7ef15671986cb` |
+| `Paper1_20L_200k_RawData.zip` | Exact 20-layer, 200,000-sample design and response CSVs used in the extended learning curve | `6aeef791606c60706d4f0f88b72e5a925177c7f4e7eac3039fe2abd550f65a01` |
+
+Both public downloads were checked against the listed SHA-256 values. The large archives are distributed as release assets rather than committed to ordinary Git history.
+
 ## Data availability
 
-The repository contains the stored design matrices, a Python response reconstruction, analysis scripts, frozen summary outputs, and selected response fixtures. The exact archived response CSVs used for the reported analyses are not yet public. Exact numerical reproduction requires those archived response matrices. See `docs/GITHUB_RELEASE_ASSETS.md` for the planned archives.
-
-No GitHub release or tag is currently attached to this repository. Cite a specific commit until a release exists.
+The repository contains the stored design matrices, Python response reconstruction, analysis scripts, frozen summary outputs, figures, and selected validation fixtures. Use the v1.1.0 release assets for exact numerical reproduction of the reported analyses.
 
 ## Important interpretation note
 
-The paper's numerical learning results are results for the **historical label definition described above**. Any manuscript statement that instead describes 350–750 nm power transmittance of a fully finite N-layer stack would not match the analyzed datasets. See `docs/DATA_GENERATION_PROVENANCE.md`.
+The paper's numerical learning results apply to the **historical label definition described above**. A statement describing 350–750 nm power transmittance of a fully finite N-layer stack would not match the analyzed datasets. See `docs/DATA_GENERATION_PROVENANCE.md`.
 
 ## Citation
 
-See `CITATION.cff`. Add an archived release DOI if one is created.
+See `CITATION.cff` and cite release v1.1.0. Add an archive DOI if one is created later.
 
 ## License
 
-Code in this repository is released under the MIT License. Publication figures, manuscript text, and third-party material may be subject to separate publisher/copyright terms after publication.
+Code in this repository is released under the MIT License. Publication figures, manuscript text, and third-party material may be subject to separate publisher or copyright terms after publication.
