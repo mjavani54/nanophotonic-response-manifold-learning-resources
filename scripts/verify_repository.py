@@ -2,6 +2,7 @@
 """Lightweight integrity check for the public reproducibility package."""
 from pathlib import Path
 import csv
+import hashlib
 import subprocess
 import sys
 
@@ -13,7 +14,6 @@ required = [
     "CITATION.cff",
     "requirements.txt",
     "environment.yml",
-    "manuscript/ACS_Photonics_Manuscript_DataCode_Aligned.docx",
     "data_generation/multlayer_metamat_generation_old.m",
     "data_generation/generate_legacy_multilayer.py",
     "data_generation/validate_legacy_generator.py",
@@ -46,6 +46,15 @@ layers = [int(float(r["layers"])) for r in rows]
 if layers != [8, 10, 12, 14, 16, 18, 20]:
     raise SystemExit(f"Unexpected layer ordering: {layers}")
 
+for line in (ROOT / "CHECKSUMS.sha256").read_text(encoding="utf-8").splitlines():
+    expected, relative = line.split("  ", 1)
+    target = ROOT / relative
+    if not target.is_file():
+        raise SystemExit(f"Checksum manifest lists missing file: {relative}")
+    actual = hashlib.sha256(target.read_bytes()).hexdigest()
+    if actual != expected:
+        raise SystemExit(f"Checksum mismatch: {relative}")
+
 subprocess.run(
     [sys.executable, str(ROOT / "data_generation/validate_legacy_generator.py")],
     check=True,
@@ -54,4 +63,4 @@ subprocess.run(
 
 print("Repository verification passed.")
 print("Layer counts:", layers)
-print("Historical data generator and archived-label fixture validation passed.")
+print("Selected archived-label fixture validation passed; exact archived response CSVs are not included.")

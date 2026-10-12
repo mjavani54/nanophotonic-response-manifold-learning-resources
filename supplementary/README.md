@@ -1,12 +1,12 @@
 # Supporting Information
 
-Potential Supporting Information items for the ACS Photonics submission can be assembled from the frozen results and diagnostic outputs, including:
+The revised ACS Photonics Supporting Information is a separate submission file. It draws on the frozen results and includes:
 
-- full PCA threshold table (95%, 99%, 99.5%, 99.9%);
+- the supported PCA thresholds (99%, 99.5%, 99.9%);
 - AE latent-dimension sweep details;
 - network-capacity sweep tables;
 - optimizer diagnostic details for the 20-layer case;
 - low-sample censoring sensitivity analysis;
 - complete learning-curve statistics across seeds.
 
-The current GitHub package contains the final manuscript-level tables and the scripts needed to regenerate the detailed outputs. Large intermediate ZIP archives are intentionally excluded.
+The current GitHub package contains frozen tables and analysis scripts but does not include the exact archived response CSVs or the separate Supporting Information submission file. See `../docs/GITHUB_RELEASE_ASSETS.md` for the planned raw-data release.

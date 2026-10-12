@@ -1,11 +1,10 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the associated ACS Photonics article and the tagged software release."
-title: "Intrinsic Response-Manifold Dimensionality Predicts Learning Resources for Nanophotonic Surrogate Models"
+message: "If you use this repository, cite its URL and the specific commit; a tagged release and article citation can be added when available."
+title: "Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models"
 type: software
 authors:
   - family-names: Javani
     given-names: Mohammad H.
 version: 1.1.0
-date-released: 2026-09-18
 repository-code: "https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources"
 license: MIT

@@ -1,23 +1,17 @@
-# Uploading this package to GitHub using the website
+# Publishing the exact response archives
 
-1. Sign in to GitHub and create a **New repository**.
-2. Suggested repository name: `nanophotonic-response-manifold-learning-resources`.
-3. Choose **Public** only when the manuscript/data release is ready; otherwise start **Private**.
-4. Do not initialize the repository with another README, license, or `.gitignore` because this package already contains them.
-5. Extract the repository ZIP on your computer.
-6. Open the new repository and choose **Add file → Upload files**.
-7. Upload the repository contents while preserving the folder structure.
-8. Commit with a message such as `Reproducibility release v1.1.0`.
-9. Run or inspect `scripts/verify_repository.py` locally before creating the public release.
-10. Create a tagged release, preferably `v1.1.0`.
+This repository is public. It does not yet have a tagged release or the exact
+archived response CSVs used in the paper. Before creating a release:
 
-## Exact raw CSVs without a separate data DOI
+1. Add the original Python data-generation source if it can be identified.
+2. Run `python scripts/verify_repository.py` and `sha256sum -c CHECKSUMS.sha256`.
+3. Check the two raw-data ZIPs and their SHA-256 hashes against
+   `GITHUB_RELEASE_ASSETS.md`.
+4. Create a GitHub release from a specific tagged commit and attach both ZIPs
+   as release assets. Keep the large archives out of ordinary Git history.
+5. Update the manuscript and `CITATION.cff` with the exact release URL or DOI
+   and release date, then verify the public asset downloads.
 
-If you do not want a separate raw-data DOI, attach the two prepared raw-data ZIP files to the GitHub **Release**, not to normal Git history:
-
-- `Paper1_50k_RawData.zip`
-- `Paper1_20L_200k_RawData.zip`
-
-Release assets are appropriate for these large files; the normal repository should remain code/document focused. After the release is public, use the release URL in the manuscript's Data and Code Availability statement.
-
-The repository itself already contains the compressed exact design matrices and the historical response generator. The release assets provide the exact archived response CSVs for byte-level reproduction.
+The stored design matrices and Python reconstruction currently in the Git tree
+allow convention checks. The planned release assets are needed to rerun the
+reported analyses with the exact archived response values.

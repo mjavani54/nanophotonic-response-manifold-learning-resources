@@ -1,10 +1,10 @@
 # Data-generation provenance
 
-The final repository was audited against the archived historical MATLAB generator used for the multilayer labels.
+The author reports that Python generated the analyzed multilayer labels. This repository includes an older MATLAB implementation and a later Python reconstruction, but does not identify the specific Python script originally executed. The numerical response convention below is supported by comparison with selected archived label fixtures.
 
 ## Source facts
 
-The original source file is `data_generation/multlayer_metamat_generation_old.m`. It specifies:
+The archived MATLAB reference file is `data_generation/multlayer_metamat_generation_old.m`. It specifies:
 
 - `NSamp = 200`;
 - `fmin = 250e3` GHz and `fmax = 1050e3` GHz;
@@ -19,7 +19,7 @@ The propagation loop contains only `1:(N-1)` and the final step applies an inter
 
 ## Empirical cross-check
 
-The Python translation was compared against archived label columns from the paper datasets. Using the stored design values, it reproduces the archived responses to small numerical differences consistent with the historical CSV rounding. This verifies that the 250–1050 THz legacy definition, rather than a 350–750 nm power-transmittance definition, generated the analyzed response files.
+The Python reconstruction was compared against selected archived label columns. With stored rounded design values, the checked fixtures agree within the tolerance reported by `validate_legacy_generator.py`. This supports the documented 250–1050 THz response convention for the checked fixtures. It does not establish that the MATLAB program was run, identify the original Python generator, or show bitwise agreement for the full archives.
 
 ## Consequence for manuscript wording
 

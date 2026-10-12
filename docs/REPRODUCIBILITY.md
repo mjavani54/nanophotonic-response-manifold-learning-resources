@@ -6,9 +6,9 @@
 python data_generation/validate_legacy_generator.py
 ```
 
-The original MATLAB source and a Python translation are included under `data_generation/`.
+An older MATLAB reference and a Python reconstruction are included under `data_generation/`. The author reports Python generated the original data; the specific original Python source has not yet been identified in this repository. Fixture checks are limited to selected archived label columns.
 
-## 1. Rebuild the historical response labels
+## 1. Recalculate response labels from stored designs
 
 The exact stored design matrices used in the study are included under `data/exact_designs/`.
 
@@ -18,9 +18,9 @@ Example:
 python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L8_50k   --out-dir generated/L8
 ```
 
-Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct the full 50k and extended 20-layer archives.
+Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct full 50k and extended 20-layer archives. These regenerated outputs can differ numerically from the exact response CSVs used in the paper. Those archived CSVs have not yet been released; use them as inputs to reproduce the reported frozen analyses exactly.
 
-## 2. Intrinsic dimensionality
+## 2. Response-complexity analyses
 
 ```bash
 python code/paper1_intrinsic_dimensionality_pipeline_fixed.py   --zip generated/Datasets50k_regenerated.zip   --mode full
@@ -58,7 +58,7 @@ python code/paper1_low_sample_refinement.py   --zip-small generated/Datasets50k_
 
 ## 8. Frozen final outputs
 
-The paper-level consolidated CSV files are under `results/`. These are the exact frozen statistics reported in the manuscript.
+The paper-level consolidated CSV files are under `results/`. They are the frozen statistics reported in the manuscript. The exact archived response CSV inputs are still needed to rerun the same analyses.
 
 ## Reproducibility conventions
 

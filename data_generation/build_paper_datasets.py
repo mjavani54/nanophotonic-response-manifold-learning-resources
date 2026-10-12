@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Regenerate the paper CSV archives from included stored design matrices."""
+"""Recalculate approximate paper-format CSVs from stored design matrices.
+
+Exact archived response CSVs used in the paper must be obtained separately.
+"""
 from __future__ import annotations
 import argparse
 from pathlib import Path

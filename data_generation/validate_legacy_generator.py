@@ -30,4 +30,4 @@ for name, designs, expected in tests:
 # A 4e-4 tolerance captures the worst observed round-trip difference in the archived fixture, which occurs near a spectrally sensitive point in the 20-layer set.
 if worst > 4e-4:
     raise SystemExit(f"FAILED: worst error {worst:.3e} exceeds 4e-4")
-print("PASS: Python legacy generator matches the archived label definition; residual differences reflect recomputation from stored rounded design values.")
+print("PASS: Python reconstruction agrees with selected archived fixtures within tolerance; full-archive identity and original source provenance are unverified.")

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Reproduce the historical multilayer labels used in this paper.
+"""Reconstruct the documented historical multilayer response convention.
 
 This is a Python translation of ``multlayer_metamat_generation_old.m``.
 It intentionally preserves the historical response definition and propagation
-logic so that the published datasets can be regenerated from the archived
-paper-design matrices.
+logic. The author reports that Python generated the original datasets, but
+the particular source file executed is not identified here. Recomputed labels
+from stored rounded designs can differ from the archived response CSVs.
 
 Historical generator definition
 --------------------------------
@@ -21,7 +22,7 @@ Historical generator definition
   material is used as the exit medium, so the final sampled thickness does
   not affect the stored response.
 
-The script can either regenerate labels for the exact compressed design
+The script can either recalculate labels for the compressed stored design
 matrices shipped with the repository or generate a new iid uniform design
 ensemble with an explicit seed.
 """
@@ -134,8 +135,8 @@ def load_designs(npz_path: Path, key: str) -> np.ndarray:
 def generate_designs(layers: int, samples: int, seed: int) -> np.ndarray:
     """Generate a new reproducible iid uniform 30--70 nm ensemble.
 
-    This produces a new ensemble. It is not claimed to reconstruct the
-    historical MATLAB RNG state, which was not recorded in the source file.
+    This produces a new ensemble and does not reconstruct the random state
+    used to generate the archived designs.
     """
     rng = np.random.default_rng(seed)
     return rng.uniform(30e-9, 70e-9, size=(layers, samples)).astype(np.float64)

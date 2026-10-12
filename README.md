@@ -1,18 +1,14 @@
-# Intrinsic Response-Manifold Dimensionality Predicts Learning Resources for Nanophotonic Surrogate Models
+# Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models
 
 Reproducibility repository for the ACS Photonics manuscript:
 
-> **Intrinsic Response-Manifold Dimensionality Predicts Learning Resources for Nanophotonic Surrogate Models**
+> **Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models**
 
 ## Scientific question
 
-How much training data and neural-network capacity are needed to learn a nanophotonic forward model, and can those resource requirements be anticipated before full-scale training?
+How do operational measures of response complexity relate to the tested training-set sizes and neural-network capacities needed to learn a multilayer forward model?
 
-This study analyzes the empirical chain
-
-**structural complexity → response-manifold dimensionality → learning-resource demand**
-
-for alternating SiO2/TiO2 multilayer datasets with nominal design-vector lengths of 8–20.
+This study compares response descriptors with learning-resource thresholds within one controlled family of alternating SiO2/TiO2 multilayers with nominal design-vector lengths of 8–20. Layer count and response complexity vary together, so the correlations do not establish independent prediction beyond layer count or transfer to unrelated structures. The autoencoder bottleneck is an operational reconstruction threshold, not a mathematical intrinsic dimension.
 
 ## Main findings
 
@@ -32,13 +28,12 @@ The wording **minimum tested** is intentional. The resource thresholds were eval
 ```text
 .
 ├── code/                 Neural-network and dimensionality analyses
-├── data_generation/      Historical MATLAB generator + validated Python translation
+├── data_generation/      Archived MATLAB reference + Python reconstruction
 ├── data/
 │   ├── exact_designs/    Compressed design matrices used by the paper
 │   └── reference_fixture/Small label fixtures for generator verification
 ├── docs/                 Reproducibility and provenance documentation
 ├── figures/              Final figures and ACS TOC graphic
-├── manuscript/           Latest manuscript version
 ├── results/              Frozen CSV tables used for final statistics
 ├── scripts/              Repository verification helper
 ├── supplementary/        Supporting-information notes
@@ -48,11 +43,11 @@ The wording **minimum tested** is intentional. The resource thresholds were eval
 └── requirements.txt
 ```
 
-## Historical dataset generator used by the analyzed data
+## Response convention and source provenance
 
-The repository now includes the original MATLAB source, `data_generation/multlayer_metamat_generation_old.m`, together with a Python translation that reproduces its stored response labels.
+The author reports that the analyzed datasets were generated using Python. The repository contains an older MATLAB source file, `data_generation/multlayer_metamat_generation_old.m`, and a later Python reconstruction of that numerical convention. It does not currently identify the specific Python script executed to make the archived response CSVs. Agreement with selected response fixtures supports the documented label convention but does not prove source-code identity or full-archive equality.
 
-The analyzed historical labels were generated with:
+The reconstructed historical label convention uses:
 
 - 200 **uniform frequency** samples from **250 to 1050 THz**;
 - normal incidence (`theta = 0°`);
@@ -61,7 +56,7 @@ The analyzed historical labels were generated with:
 - sampled thickness entries from **30 to 70 nm**;
 - stored response `abs(t_legacy)`, i.e. the magnitude of the historical field-transmission coefficient.
 
-The historical implementation propagates the first `N-1` thicknesses and then applies an interface into the `N`th material. Consequently, the final sampled thickness is present in the design vector but does not affect the stored historical response. This behavior is preserved deliberately in the reproduction code because it is the label definition analyzed in the paper.
+The reconstructed implementation propagates the first `N-1` thicknesses and then applies an interface into the `N`th material. Consequently, the final sampled thickness is present in the design vector but does not affect the response under this documented convention. This behavior is preserved in the reproduction code.
 
 This is **not** a corrected finite-stack power-transmittance solver. The repository documents the historical label definition rather than silently replacing it with a different physical model.
 
@@ -72,7 +67,7 @@ This is **not** a corrected finite-stack power-transmittance solver. The reposit
 - 8, 10, 12, 14, 16, 18, and 20 entries × 50,000 designs;
 - the separate 20-entry × 200,000-design ensemble used for the extended learning curve.
 
-The archived design CSVs were historically stored at limited decimal precision. The Python translation therefore reproduces the archived response CSVs to the precision expected from those stored design values; `data_generation/validate_legacy_generator.py` verifies this behavior against selected archived label fixtures.
+The archived design CSVs were stored at limited decimal precision. Recomputed responses can differ from the exact archived response CSVs. `data_generation/validate_legacy_generator.py` checks selected archived label fixtures; it does not verify every archived response or reproduce the exact input matrices used by the downstream analyses.
 
 Example:
 
@@ -88,7 +83,7 @@ A new statistically equivalent ensemble can also be generated with an explicit s
 python data_generation/generate_legacy_multilayer.py   --new-designs --layers 14 --samples 50000 --seed 20260918   --out-dir generated/L14_new
 ```
 
-The new-design option does not claim to reconstruct the unrecorded historical MATLAB random-number-generator state.
+The new-design option does not reconstruct the random-number-generator state used for the archived datasets.
 
 ## Installation
 
@@ -104,7 +99,7 @@ A CUDA-enabled PyTorch installation is strongly recommended for the neural-netwo
 
 ## Reproducing the analysis
 
-Generate the historical response labels from the included design archive, or use already generated CSVs locally, and then run the analysis scripts in the order documented in `docs/REPRODUCIBILITY.md`.
+For exact numerical reproduction, obtain the archived response CSVs used in the paper and run the analysis scripts in the order documented in `docs/REPRODUCIBILITY.md`. They are not yet published in this repository or a release. Generated responses from the stored rounded designs are suitable for checking the documented convention, subject to numerical differences.
 
 The core scripts are:
 
@@ -119,9 +114,9 @@ Frozen final outputs are included under `results/` so readers can inspect the re
 
 ## Data availability
 
-A separate raw-data DOI is not required for this repository version because the exact stored design matrices used in the study are included directly in the repository and the response-label generator is provided. The repository also contains frozen final analysis outputs and validation fixtures.
+The repository contains the stored design matrices, a Python response reconstruction, analysis scripts, frozen summary outputs, and selected response fixtures. The exact archived response CSVs used for the reported analyses are not yet public. Exact numerical reproduction requires those archived response matrices. See `docs/GITHUB_RELEASE_ASSETS.md` for the planned archives.
 
-For archival transparency, users should cite the tagged GitHub release or its software archive DOI if one is created.
+No GitHub release or tag is currently attached to this repository. Cite a specific commit until a release exists.
 
 ## Important interpretation note
 
@@ -129,7 +124,7 @@ The paper's numerical learning results are results for the **historical label de
 
 ## Citation
 
-See `CITATION.cff`. Replace the repository URL/DOI fields after the public release is created.
+See `CITATION.cff`. Add an archived release DOI if one is created.
 
 ## License
 
