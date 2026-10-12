@@ -29,6 +29,6 @@ See `data_generation/README.md` for the exact historical TMM convention.
 
 ## Exact archived response CSVs
 
-For byte-level reproduction of the original downstream analysis, the original rounded response CSVs should be attached to a tagged GitHub Release rather than committed to Git history. The repository's generator reproduces the same historical numerical definition, but small differences can occur when recomputing from the stored rounded design values because the original unrounded random thickness values were not archived separately.
+For byte-level reproduction of the original downstream analysis, download the original rounded design and response CSVs from release v1.1.0. They are distributed as release assets rather than committed to Git history. The repository's reconstruction implements the documented historical numerical definition, but small differences can occur when recomputing from the stored rounded design values because the original unrounded random thickness values were not archived separately.
 
-A separate DOI-bearing raw-data repository is therefore optional if the exact raw CSV ZIP files are distributed as GitHub Release assets together with a tagged code release.
+The asset names and SHA-256 checksums are recorded in `../docs/GITHUB_RELEASE_ASSETS.md`.

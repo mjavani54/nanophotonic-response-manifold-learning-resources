@@ -1,17 +1,14 @@
-# Publishing the exact response archives
+# Published exact response archives
 
-This repository is public. It does not yet have a tagged release or the exact
-archived response CSVs used in the paper. Before creating a release:
+The repository and release v1.1.0 are public. The release contains the exact
+archived design and response CSVs used in the paper. The completed checks were:
 
-1. Add the original Python data-generation source if it can be identified.
-2. Run `python scripts/verify_repository.py` and `sha256sum -c CHECKSUMS.sha256`.
-3. Check the two raw-data ZIPs and their SHA-256 hashes against
+1. `python scripts/verify_repository.py` passes.
+2. `sha256sum -c CHECKSUMS.sha256` passes for the Git-tracked files.
+3. Both release assets match the SHA-256 values in
    `GITHUB_RELEASE_ASSETS.md`.
-4. Create a GitHub release from a specific tagged commit and attach both ZIPs
-   as release assets. Keep the large archives out of ordinary Git history.
-5. Update the manuscript and `CITATION.cff` with the exact release URL or DOI
-   and release date, then verify the public asset downloads.
+4. Tag `v1.1.0` resolves to the released repository commit.
 
-The stored design matrices and Python reconstruction currently in the Git tree
-allow convention checks. The planned release assets are needed to rerun the
-reported analyses with the exact archived response values.
+The stored design matrices and Python reconstruction in the Git tree allow
+convention checks. The release assets provide the exact archived inputs for
+rerunning the reported analyses.

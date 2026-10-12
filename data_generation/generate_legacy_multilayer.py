@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reconstruct the documented historical multilayer response convention.
 
-This is a Python translation of ``multlayer_metamat_generation_old.m``.
+This is a Python reconstruction based on ``multlayer_metamat_generation_old.m``.
 It intentionally preserves the historical response definition and propagation
 logic. The author reports that Python generated the original datasets, but
 the particular source file executed is not identified here. Recomputed labels

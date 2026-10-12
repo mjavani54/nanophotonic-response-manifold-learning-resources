@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Recalculate approximate paper-format CSVs from stored design matrices.
 
-Exact archived response CSVs used in the paper must be obtained separately.
+Exact archived design and response CSVs used in the paper are release assets.
 """
 from __future__ import annotations
 import argparse

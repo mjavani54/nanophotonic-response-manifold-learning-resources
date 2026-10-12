@@ -26,4 +26,4 @@ Available keys are `L8_50k`, `L10_50k`, `L12_50k`, `L14_50k`, `L16_50k`, `L18_50
 
 ## Precision note
 
-The historical design CSVs were stored with limited decimal precision. The included design archive preserves the values that were actually available to the downstream analysis. Recomputing labels from those rounded designs can differ from archived response CSV values near highly sensitive spectral features. The validation script quantifies the error for selected fixtures only. The exact archived response CSVs used in the reported analyses are not yet public.
+The historical design CSVs were stored with limited decimal precision. The included design archive preserves the values that were actually available to the downstream analysis. Recomputing labels from those rounded designs can differ from archived response CSV values near highly sensitive spectral features. The validation script quantifies the error for selected fixtures only. The exact archived design and response CSVs used in the reported analyses are public as assets of release v1.1.0.

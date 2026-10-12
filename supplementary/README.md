@@ -9,4 +9,4 @@ The revised ACS Photonics Supporting Information is a separate submission file. 
 - low-sample censoring sensitivity analysis;
 - complete learning-curve statistics across seeds.
 
-The current GitHub package contains frozen tables and analysis scripts but does not include the exact archived response CSVs or the separate Supporting Information submission file. See `../docs/GITHUB_RELEASE_ASSETS.md` for the planned raw-data release.
+The Git repository contains frozen tables and analysis scripts. The exact archived design and response CSVs are assets of release v1.1.0. The separate Supporting Information submission file is maintained outside the repository.

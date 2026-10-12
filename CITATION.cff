@@ -1,10 +1,12 @@
 cff-version: 1.2.0
-message: "If you use this repository, cite its URL and the specific commit; a tagged release and article citation can be added when available."
+message: "If you use this repository, cite release v1.1.0 and the associated ACS Photonics article when available."
 title: "Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models"
 type: software
 authors:
   - family-names: Javani
     given-names: Mohammad H.
 version: 1.1.0
+date-released: 2026-10-12
 repository-code: "https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources"
+url: "https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0"
 license: MIT

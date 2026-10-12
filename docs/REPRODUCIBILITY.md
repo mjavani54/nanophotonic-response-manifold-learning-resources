@@ -18,7 +18,7 @@ Example:
 python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L8_50k   --out-dir generated/L8
 ```
 
-Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct full 50k and extended 20-layer archives. These regenerated outputs can differ numerically from the exact response CSVs used in the paper. Those archived CSVs have not yet been released; use them as inputs to reproduce the reported frozen analyses exactly.
+Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct full 50k and extended 20-layer archives. These regenerated outputs can differ numerically from the exact response CSVs used in the paper. Download the archived inputs from release v1.1.0 to reproduce the reported frozen analyses exactly.
 
 ## 2. Response-complexity analyses
 
@@ -58,7 +58,7 @@ python code/paper1_low_sample_refinement.py   --zip-small generated/Datasets50k_
 
 ## 8. Frozen final outputs
 
-The paper-level consolidated CSV files are under `results/`. They are the frozen statistics reported in the manuscript. The exact archived response CSV inputs are still needed to rerun the same analyses.
+The paper-level consolidated CSV files are under `results/`. They are the frozen statistics reported in the manuscript. The exact archived design and response CSV inputs needed to rerun the same analyses are assets of release v1.1.0.
 
 ## Reproducibility conventions
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Python translation against archived paper-label fixtures."""
+"""Validate the Python reconstruction against archived paper-label fixtures."""
 from pathlib import Path
 import sys
 import numpy as np

@@ -63,4 +63,4 @@ subprocess.run(
 
 print("Repository verification passed.")
 print("Layer counts:", layers)
-print("Selected archived-label fixture validation passed; exact archived response CSVs are not included.")
+print("Selected archived-label fixture validation passed; exact archived CSVs are provided as release assets.")
