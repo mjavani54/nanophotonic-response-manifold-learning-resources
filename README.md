@@ -1,8 +1,8 @@
-# Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models
+# Nanophotonic Response Manifold Learning Resources
 
 Reproducibility repository for the ACS Photonics manuscript:
 
-> **Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models**
+> **Response Complexity and Accuracy-Dependent Learning Resources in Multilayer Nanophotonic Surrogate Models**
 
 ## Scientific question
 
@@ -12,7 +12,7 @@ This study compares response descriptors with learning-resource thresholds withi
 
 ## Main findings
 
-The frozen analysis reports:
+The frozen v1.1.0 analysis reports:
 
 - PCA dimension at 99% explained variance: **9 → 53**.
 - Nonlinear autoencoder latent dimension at reconstruction R² ≥ 0.99: **5 → 30**.
@@ -134,7 +134,9 @@ Both public downloads were checked against the listed SHA-256 values. The large 
 
 ## Data availability
 
-The repository contains the stored design matrices, Python response reconstruction, analysis scripts, frozen summary outputs, figures, and selected validation fixtures. Use the v1.1.0 release assets for exact numerical reproduction of the reported analyses.
+The repository contains the stored design matrices, Python response reconstruction, analysis scripts, frozen summary outputs, figures, and selected validation fixtures. Use the v1.1.0 release assets for exact numerical reproduction of the original experiments.
+
+The submitted Article, **Response Complexity and Accuracy-Dependent Learning Resources in Multilayer Nanophotonic Surrogate Models**, also includes class-summary reanalyses, a controlled 20-layer spectral-window comparison, and separately generated training-only cohorts for 14, 16, and 18 layers. Their code, new inputs, individual runs, and checksums accompany the Article as separate Supporting Information archives: `ACS_Photonics_Summary_Reanalysis.zip`, `ACS_Photonics_20L_Window_Sensitivity_Resources.zip`, `Table2_Extended_Data_and_Run_Package.zip`, and `ACS_Photonics_Table2_Extended_Results.zip`. These extensions are not part of the frozen v1.1.0 release.
 
 ## Important interpretation note
 

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this repository, cite release v1.1.0 and the associated ACS Photonics article when available."
-title: "Response Complexity Tracks Learning Resources in Multilayer Nanophotonic Surrogate Models"
+message: "Cite release v1.1.0 for the original archived data and the associated ACS Photonics Article when available. The new reanalyses and extension archives accompany the Article separately."
+title: "Nanophotonic Response Manifold Learning Resources"
 type: software
 authors:
   - family-names: Javani
