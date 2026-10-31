@@ -4,13 +4,21 @@ Reproducibility repository for the ACS Photonics manuscript:
 
 > **Response Complexity and Accuracy-Dependent Learning Resources in Multilayer Nanophotonic Surrogate Models**
 
+## Release status and reproducibility scope
+
+The exact archived design and response CSVs are downloadable as the two assets of [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0). See [Public data release](#public-data-release) for filenames and checksums.
+
+**Version note.** The README captured by the `v1.1.0` Git tag was written before the two raw-data archives were attached to that release. Its statements saying that the response CSVs or release were unavailable are outdated. The tagged source remains unchanged for provenance; the release assets and this current README describe their availability. The release title reflects an earlier title of the manuscript; the archived data are also used in the combined Article named above.
+
+The additional class-summary reanalysis, 20-layer spectral-window experiment, and augmented 14-, 16-, and 18-layer training cohorts are **not** contained in v1.1.0. They are provided as separate Supporting Information archives with the combined Article, as listed under [Data availability](#data-availability). Do not substitute generated response arrays for the exact archived CSVs when checking the frozen numerical results.
+
 ## Scientific question
 
 How do operational measures of response complexity relate to the tested training-set sizes and neural-network capacities needed to learn a multilayer forward model?
 
 This study compares response descriptors with learning-resource thresholds within one controlled family of alternating SiO2/TiO2 multilayers with nominal design-vector lengths of 8–20. Layer count and response complexity vary together, so the correlations do not establish independent prediction beyond layer count or transfer to unrelated structures. The autoencoder bottleneck is an operational reconstruction threshold, not a mathematical intrinsic dimension.
 
-## Main findings
+## Frozen primary findings
 
 The frozen v1.1.0 analysis reports:
 
@@ -136,7 +144,16 @@ Both public downloads were checked against the listed SHA-256 values. The large 
 
 The repository contains the stored design matrices, Python response reconstruction, analysis scripts, frozen summary outputs, figures, and selected validation fixtures. Use the v1.1.0 release assets for exact numerical reproduction of the original experiments.
 
-The submitted Article, **Response Complexity and Accuracy-Dependent Learning Resources in Multilayer Nanophotonic Surrogate Models**, also includes class-summary reanalyses, a controlled 20-layer spectral-window comparison, and separately generated training-only cohorts for 14, 16, and 18 layers. Their code, new inputs, individual runs, and checksums accompany the Article as separate Supporting Information archives: `ACS_Photonics_Summary_Reanalysis.zip`, `ACS_Photonics_20L_Window_Sensitivity_Resources.zip`, `Table2_Extended_Data_and_Run_Package.zip`, and `ACS_Photonics_Table2_Extended_Results.zip`. These extensions are not part of the frozen v1.1.0 release.
+The combined Article includes the following revision-specific analyses. They are distributed as **separate Supporting Information archives**, not as assets of the frozen v1.1.0 release:
+
+| Supporting Information archive | Contents and scope |
+|---|---|
+| `ACS_Photonics_Summary_Reanalysis.zip` | Class-summary inputs, exact-permutation Spearman p values, layer-count comparisons, accuracy-threshold extraction, and a standard-library verification script. This reanalysis does not rerun neural-network training. |
+| `ACS_Photonics_20L_Window_Sensitivity_Resources.zip` | Historical 20-layer design/response CSVs, scripts, checksums, and all 48 autoencoder fits on two 200-point spectral grids. The current 20-layer primary input is available from v1.1.0. The first tested mean-R² ≥ 0.99 bottleneck changes from 20 on 350–750 THz to 30 on 250–1050 THz under this protocol; this is not a matched reproduction of the 10-coordinate illustration in the related preprint. |
+| `Table2_Extended_Data_and_Run_Package.zip` | Newly generated training-only design/response matrices for the 14-, 16-, and 18-layer classes, generator and training scripts, run inputs, and source checks. The original validation and test sets remain held out. |
+| `ACS_Photonics_Table2_Extended_Results.zip` | Individual scores, full histories, experiment metadata, summaries, and audit outputs for 72 augmented-protocol fits. First tested three-seed mean-R² ≥ 0.999 crossings are 60,000, 50,000, and 80,000 total training pairs for 14, 16, and 18 layers, respectively. All 72 fits reached the 1,200-epoch cap. |
+
+The augmented labels were calculated with the documented reconstructed legacy response implementation; the exact original historical Python generator remains unidentified. The new crossings are conditional on the stated architecture, optimization budget, response convention, and discrete sample grid. They do not establish a universal complexity-to-resource rule.
 
 ## Important interpretation note
 
@@ -144,8 +161,9 @@ The paper's numerical learning results apply to the **historical label definitio
 
 ## Citation
 
-See `CITATION.cff` and cite release v1.1.0. Add an archive DOI if one is created later.
+Cite the combined Article for its new scientific analyses and cite release v1.1.0 when using the archived primary data and frozen repository code. The four revision-specific Supporting Information archives should be cited through the Article and its published Supporting Information, once available. See `CITATION.cff` for repository metadata.
 
 ## License
 
 Code in this repository is released under the MIT License. Publication figures, manuscript text, and third-party material may be subject to separate publisher or copyright terms after publication.
+
