@@ -1,5 +1,0 @@
-Journal of Modern Optics candidate repository update
-
-The overlay package was built against public main commit 1629afb7813dc0db57fdac7c0e600e0f95f1c002. It preserves the v1.1.0 tag and old root code/results/figures. See the package's APPLY_UPDATE.md for copying, conflict checks, and verification commands.
-
-The present study's full response arrays are absent. This update is suitable as a clearly labeled candidate-study resource, not a claim that the paper has a complete public data deposit. Do not make a new release or replace the manuscript's bracketed data links until the missing arrays and source-design archives are supplied and verified.
