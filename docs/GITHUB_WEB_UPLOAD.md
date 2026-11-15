@@ -1,5 +1,7 @@
 # Published exact response archives
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 The repository and release v1.1.0 are public. The release contains the exact
 archived design and response CSVs used in the paper. The completed checks were:
 

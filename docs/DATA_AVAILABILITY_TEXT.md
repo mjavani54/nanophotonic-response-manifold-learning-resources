@@ -1,3 +1,13 @@
-# Suggested manuscript data/code availability statement
+# Data and code availability wording
 
-Stored design matrices, a Python reconstruction of the documented response convention, analysis scripts, frozen summary outputs, and selected validation fixtures are available in the accompanying GitHub repository. The exact archived design and response CSVs used for the reported analyses are publicly available as assets of release v1.1.0. The author reports that the analyzed labels were generated using Python, but the specific original Python script is not identified in the public materials. Recalculation from stored rounded designs can differ numerically from the archived responses; the release assets should be used for exact numerical reproduction.
+## Archived v1.1.0 study
+
+The exact archived design and response CSV files used for the earlier analysis are available as two assets of [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0). Its Python reconstruction, training code, frozen numerical summaries, and selected validation fixtures are in the repository. The original executed Python generator for those old CSVs was not identified.
+
+## Journal of Modern Optics candidate
+
+**Do not paste the following into a submitted manuscript until the bracket is resolved and all public files are verified:**
+
+> The source designs, calculated response matrices, source and analysis code, fit records, and checksum manifests underlying this study are available at [AUTHOR: insert verified versioned public link].
+
+The [candidate-study folder](../studies/jmo_2026_candidate/README.md) currently contains its source snapshot, summary data, recorded fit outputs, and figures, but not the complete response arrays and source-design archives. Release v1.1.0 is **not** a valid substitute for those missing arrays. The manuscript must state the actual response definition and any limitations of the deposit.

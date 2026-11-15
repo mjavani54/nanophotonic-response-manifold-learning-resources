@@ -1,169 +1,34 @@
-# Nanophotonic Response Manifold Learning Resources
+# Nanophotonic response manifold learning resources
 
-Reproducibility repository for the ACS Photonics manuscript:
+This repository contains two **distinct numerical studies** of multilayer optical surrogates. The archived [v1.1.0 release](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) remains an exact record of its earlier data and results. The [Journal of Modern Optics candidate](studies/jmo_2026_candidate/README.md) is a separate working analysis. It is **not yet a complete public reproduction deposit** or a published version of the paper.
 
-> **Response Complexity and Accuracy-Dependent Learning Resources in Multilayer Nanophotonic Surrogate Models**
-
-## Release status and reproducibility scope
-
-The exact archived design and response CSVs are downloadable as the two assets of [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0). See [Public data release](#public-data-release) for filenames and checksums.
-
-**Version note.** The README captured by the `v1.1.0` Git tag was written before the two raw-data archives were attached to that release. Its statements saying that the response CSVs or release were unavailable are outdated. The tagged source remains unchanged for provenance; the release assets and this current README describe their availability. The release title reflects an earlier title of the manuscript; the archived data are also used in the combined Article named above.
-
-The additional class-summary reanalysis, 20-layer spectral-window experiment, and augmented 14-, 16-, and 18-layer training cohorts are **not** contained in v1.1.0. They are provided as separate Supporting Information archives with the combined Article, as listed under [Data availability](#data-availability). Do not substitute generated response arrays for the exact archived CSVs when checking the frozen numerical results.
-
-## Scientific question
-
-How do operational measures of response complexity relate to the tested training-set sizes and neural-network capacities needed to learn a multilayer forward model?
-
-This study compares response descriptors with learning-resource thresholds within one controlled family of alternating SiO2/TiO2 multilayers with nominal design-vector lengths of 8–20. Layer count and response complexity vary together, so the correlations do not establish independent prediction beyond layer count or transfer to unrelated structures. The autoencoder bottleneck is an operational reconstruction threshold, not a mathematical intrinsic dimension.
-
-## Frozen primary findings
-
-The frozen v1.1.0 analysis reports:
-
-- PCA dimension at 99% explained variance: **9 → 53**.
-- Nonlinear autoencoder latent dimension at reconstruction R² ≥ 0.99: **5 → 30**.
-- Minimum tested training-set size for mean test R² ≥ 0.99: **≤1,000 → 30,000** samples.
-- AE dimension vs. minimum tested training-set threshold: **Pearson r = 0.992, p = 1.1 × 10⁻5**.
-- AE dimension vs. resolved minimum tested model-capacity threshold: **Pearson r = 0.955, p = 0.00295**.
-- For the extended 20-layer study, the first tested sizes crossing R² = 0.99, 0.995, and 0.999 are **30k, 50k, and 150k**, respectively.
-
-The wording **minimum tested** is intentional. The resource thresholds were evaluated on discrete grids.
-
-## Repository structure
-
-```text
-.
-├── code/                 Neural-network and dimensionality analyses
-├── data_generation/      Archived MATLAB reference + Python reconstruction
-├── data/
-│   ├── exact_designs/    Compressed design matrices used by the paper
-│   └── reference_fixture/Small label fixtures for generator verification
-├── docs/                 Reproducibility and provenance documentation
-├── figures/              Final figures and ACS TOC graphic
-├── results/              Frozen CSV tables used for final statistics
-├── scripts/              Repository verification helper
-├── supplementary/        Supporting-information notes
-├── CHECKSUMS.sha256
-├── CITATION.cff
-├── LICENSE
-├── environment.yml
-└── requirements.txt
-```
-
-## Response convention and source provenance
-
-The author reports that the analyzed datasets were generated using Python. The repository contains an older MATLAB reference file, `data_generation/multlayer_metamat_generation_old.m`, and a later Python reconstruction of the documented numerical convention. The specific original Python program executed to generate the archived response CSVs has not been identified. Agreement with selected response fixtures supports the documented label convention but does not establish source-code identity or full-archive equality.
-
-The reconstructed historical label convention uses:
-
-- 200 **uniform-frequency** samples from **250 to 1050 THz**;
-- normal incidence (`theta = 0°`);
-- the legacy parallel-polarization flag (`p = 1`);
-- alternating material parameters `epsilon_SiO2 = 1.46` and `epsilon_TiO2 = 5.913`, with `mu = 1` and `sigma = 0`;
-- sampled thickness entries from **30 to 70 nm**; and
-- stored response `abs(t_legacy)`, the magnitude of the historical field-transmission coefficient.
-
-The reconstructed implementation propagates the first `N-1` thicknesses and then applies an interface into the `N`th material. Consequently, the final sampled thickness is present in the design vector but does not affect the response under this documented convention. This behavior is preserved in the reproduction code.
-
-This is **not** a corrected finite-stack power-transmittance solver. The repository documents the historical label definition rather than silently replacing it with a different physical model.
-
-## Exact design matrices and data regeneration
-
-`data/exact_designs/paper1_exact_designs.npz` contains the design matrices used in the reported analyses:
-
-- 8, 10, 12, 14, 16, 18, and 20 entries × 50,000 designs; and
-- the separate 20-entry × 200,000-design ensemble used for the extended learning curve.
-
-The archived design CSVs were stored at limited decimal precision. Recomputed responses can therefore differ from the exact archived response CSVs. `data_generation/validate_legacy_generator.py` checks selected archived label fixtures; it does not verify every archived response or establish identity with the original data-generation source.
-
-Example:
-
-```bash
-python data_generation/validate_legacy_generator.py
-
-python data_generation/generate_legacy_multilayer.py \
-  --design-npz data/exact_designs/paper1_exact_designs.npz \
-  --key L14_50k \
-  --out-dir generated/L14
-```
-
-A new statistically comparable ensemble can also be generated with an explicit seed:
-
-```bash
-python data_generation/generate_legacy_multilayer.py \
-  --new-designs \
-  --layers 14 \
-  --samples 50000 \
-  --seed 20260918 \
-  --out-dir generated/L14_new
-```
-
-The new-design option does not reconstruct the random-number-generator state used for the archived datasets.
-
-## Installation
-
-Python 3.11 is recommended.
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-A CUDA-enabled PyTorch installation is strongly recommended for the neural-network sweeps.
-
-## Reproducing the analysis
-
-For exact numerical reproduction, download the archived design and response CSVs from [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) and run the analysis scripts in the order documented in `docs/REPRODUCIBILITY.md`. Generated responses from the stored rounded designs are suitable for checking the documented convention, subject to the numerical differences described above.
-
-The core scripts are:
-
-1. `code/paper1_intrinsic_dimensionality_pipeline_fixed.py`
-2. `code/paper1_high_capacity_diagnostic.py`
-3. `code/paper1_20layer_optimization_diagnostic.py`
-4. `code/paper1_20layer_200k_learning_curve.py`
-5. `code/paper1_cross_structure_learning_curves_fixed.py`
-6. `code/paper1_low_sample_refinement.py`
-
-Frozen final outputs are included under `results/` so readers can inspect the reported statistics without rerunning the full GPU workflow.
-
-## Public data release
-
-The exact archived design and response CSVs used for the reported analyses are public as assets of [release v1.1.0](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0):
-
-| Asset | Contents | SHA-256 |
+| Scope | Tagged v1.1.0 archive | Journal of Modern Optics candidate |
 |---|---|---|
-| `Paper1_50k_RawData.zip` | Exact 8–20 layer, 50,000-sample design and response CSVs used in the primary analyses | `8a4406d8d470d8c56f424baf835097606d2742eea10e6a1ba7b7ef15671986cb` |
-| `Paper1_20L_200k_RawData.zip` | Exact 20-layer, 200,000-sample design and response CSVs used in the extended learning curve | `6aeef791606c60706d4f0f88b72e5a925177c7f4e7eac3039fe2abd550f65a01` |
+| SiO₂ relative permittivity in response calculation | 1.46 | 2.1316 |
+| TiO₂ relative permittivity | 5.913 | 5.913 |
+| Shared source design matrices | `data/exact_designs/paper1_exact_designs.npz` | The same primary design vectors; additional design-source cohorts are identified in the new metadata |
+| Numerical results | Root `results/` and `figures/`; exact response CSVs are v1.1.0 release assets | `studies/jmo_2026_candidate/records/` and its separate figures |
+| Exact complete study response arrays | Archived arrays are public in v1.1.0 | **Not deposited here yet** |
 
-Both public downloads were checked against the listed SHA-256 values. The large archives are distributed as release assets rather than committed to ordinary Git history.
+Do not combine tables, response arrays, or code paths from the two columns. In particular, the old `results/` CSVs, root `figures/`, root `code/`, and `data_generation/generate_legacy_multilayer.py` describe the archived model and **do not reproduce the candidate paper's numerical values**. The folder `studies/jmo_2026_candidate/source/` contains the code snapshot used for the candidate analysis and documents the distinct material parameter.
 
-## Data availability
+The candidate paper studies seven nominal layer counts (8–20) and reports first **tested** resource thresholds under specified architectures and R² criteria. Its initial autoencoder bottleneck at mean held-out R² ≥ 0.99 runs from 6 to 30; first primary-grid training sizes at mean forward test R² ≥ 0.99 range from ≤1,000 to 25,000. Its 20-layer capacity threshold on the fixed 50,000-design cohort is unresolved through 5,202,120 parameters. Two source-design ensembles test 350–750 versus 250–1050 THz spectral windows. Layer count and compression descriptors have identical class ranks, so the associations do not establish an independent predictive effect of compression. These are findings for the implemented model, not a universal physical sample-complexity law.
 
-The repository contains the stored design matrices, Python response reconstruction, analysis scripts, frozen summary outputs, figures, and selected validation fixtures. Use the v1.1.0 release assets for exact numerical reproduction of the original experiments.
+Both calculations use a 200-point frequency grid at normal incidence, constant real material parameters, and the **field-transmission magnitude** `|t|` as the label. The last sampled thickness is inactive because the implemented transfer calculation propagates N−1 thicknesses and uses material N as the exit medium. Neither model is a closed finite stack into air or flux-normalized power transmittance. Full methods and remaining data gaps are in the [candidate-study README](studies/jmo_2026_candidate/README.md).
 
-The combined Article includes the following revision-specific analyses. They are distributed as **separate Supporting Information archives**, not as assets of the frozen v1.1.0 release:
+## Integrity and status
 
-| Supporting Information archive | Contents and scope |
-|---|---|
-| `ACS_Photonics_Summary_Reanalysis.zip` | Class-summary inputs, exact-permutation Spearman p values, layer-count comparisons, accuracy-threshold extraction, and a standard-library verification script. This reanalysis does not rerun neural-network training. |
-| `ACS_Photonics_20L_Window_Sensitivity_Resources.zip` | Historical 20-layer design/response CSVs, scripts, checksums, and all 48 autoencoder fits on two 200-point spectral grids. The current 20-layer primary input is available from v1.1.0. The first tested mean-R² ≥ 0.99 bottleneck changes from 20 on 350–750 THz to 30 on 250–1050 THz under this protocol; this is not a matched reproduction of the 10-coordinate illustration in the related preprint. |
-| `Table2_Extended_Data_and_Run_Package.zip` | Newly generated training-only design/response matrices for the 14-, 16-, and 18-layer classes, generator and training scripts, run inputs, and source checks. The original validation and test sets remain held out. |
-| `ACS_Photonics_Table2_Extended_Results.zip` | Individual scores, full histories, experiment metadata, summaries, and audit outputs for 72 augmented-protocol fits. First tested three-seed mean-R² ≥ 0.999 crossings are 60,000, 50,000, and 80,000 total training pairs for 14, 16, and 18 layers, respectively. All 72 fits reached the 1,200-epoch cap. |
+`CHECKSUMS.sha256` covers the tracked checkout and the added candidate-study files (except the manifest itself). From the repository root:
 
-The augmented labels were calculated with the documented reconstructed legacy response implementation; the exact original historical Python generator remains unidentified. The new crossings are conditional on the stated architecture, optimization budget, response convention, and discrete sample grid. They do not establish a universal complexity-to-resource rule.
+```bash
+sha256sum -c CHECKSUMS.sha256
+python scripts/verify_repository.py
+```
 
-## Important interpretation note
+The verifier checks file integrity, selected v1.1.0 fixtures, and candidate-study **summary consistency**. It cannot certify full regeneration of the current analyses without the missing response matrices and source-design archives.
 
-The paper's numerical learning results apply to the **historical label definition described above**. A statement describing 350–750 nm power transmittance of a fully finite N-layer stack would not match the analyzed datasets. See `docs/DATA_GENERATION_PROVENANCE.md`.
+## Citing the work
 
-## Citation
+Cite the tagged [v1.1.0 release](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) for archived inputs and frozen outputs. The candidate paper and its complete present-study deposit need their own verified public identifiers before a data-availability statement can identify them as complete. `CITATION.cff` currently points to the archived release.
 
-Cite the combined Article for its new scientific analyses and cite release v1.1.0 when using the archived primary data and frozen repository code. The four revision-specific Supporting Information archives should be cited through the Article and its published Supporting Information, once available. See `CITATION.cff` for repository metadata.
-
-## License
-
-Code in this repository is released under the MIT License. Publication figures, manuscript text, and third-party material may be subject to separate publisher or copyright terms after publication.
-
+Code is under the MIT license. The manuscript and Supporting Information are separate working documents and are not presented here as accepted or published articles.

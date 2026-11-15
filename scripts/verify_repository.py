@@ -61,6 +61,7 @@ subprocess.run(
     cwd=ROOT,
 )
 
-print("Repository verification passed.")
-print("Layer counts:", layers)
-print("Selected archived-label fixture validation passed; exact archived CSVs are provided as release assets.")
+subprocess.run([sys.executable, str(ROOT / "studies/jmo_2026_candidate/verify_summary.py")],
+               check=True, cwd=ROOT)
+print("Repository file integrity, archived fixtures, and candidate summaries passed.")
+print("Complete current response archives were not verified; see the candidate README.")

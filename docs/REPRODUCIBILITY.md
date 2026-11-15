@@ -1,5 +1,7 @@
 # Reproducibility workflow
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 ## 0. Verify the dataset generator
 
 ```bash

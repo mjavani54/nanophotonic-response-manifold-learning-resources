@@ -1,5 +1,7 @@
 # Verified methods source note
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 The author reports that Python generated the analyzed multilayer datasets. The archived MATLAB file `data_generation/multlayer_metamat_generation_old.m` and selected response fixtures support the numerical convention below, but the specific original Python script has not been identified in the public repository.
 
 ## Documented response convention

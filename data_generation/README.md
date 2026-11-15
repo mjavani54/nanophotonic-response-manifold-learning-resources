@@ -1,5 +1,7 @@
 # Data generation
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 This directory contains an older MATLAB reference and a later Python reconstruction of the response convention analyzed in the manuscript. The author reports that the original data were generated with Python; that specific Python source has not yet been identified in the public repository.
 
 ## Files

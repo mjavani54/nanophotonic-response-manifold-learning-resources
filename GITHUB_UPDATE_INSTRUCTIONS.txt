@@ -1,22 +1,5 @@
-GitHub metadata update for the ACS Photonics submission
+Journal of Modern Optics candidate repository update
 
-Purpose
-The public repository currently describes the earlier manuscript title and an earlier Supporting Information scope. This package updates those descriptions without changing the frozen v1.1.0 tag, its two raw-data assets, or the recorded numerical results.
+The overlay package was built against public main commit 1629afb7813dc0db57fdac7c0e600e0f95f1c002. It preserves the v1.1.0 tag and old root code/results/figures. See the package's APPLY_UPDATE.md for copying, conflict checks, and verification commands.
 
-Copy these four files into the corresponding paths in a current clone:
-  README.md
-  CITATION.cff
-  supplementary/README.md
-  CHECKSUMS.sha256
-
-From the repository root, verify the changed entries with:
-  shasum -a 256 README.md CITATION.cff supplementary/README.md
-Then run:
-  python3 scripts/verify_repository.py
-The latter also checks the unchanged repository files and selected response fixtures; it requires the Python dependencies described in requirements.txt.
-
-Commit and push these four text files after review. Do not replace or rewrite the v1.1.0 release: the manuscript explicitly treats its results as frozen.
-
-The four new research archives are in the separate submission package under supporting_archives/. They are not included as ordinary Git files in this update package. If you also want them publicly hosted on GitHub, create a separate release (for example v1.2.0) and attach those four ZIPs as release assets. A draft release description and their SHA-256 values are provided in RELEASE_NOTES_v1.2.0.md. Confirm the actual downloads and hashes before claiming that the new resources are public.
-
-If ACS Publishing Center rejects the 394 MB data-and-run archive, do not submit a manuscript that says it accompanies the submission without giving reviewers a working alternative. Publish a stable accessible deposit, then revise the manuscript, Supporting Information, and cover letter to identify that exact link.
+The present study's full response arrays are absent. This update is suitable as a clearly labeled candidate-study resource, not a claim that the paper has a complete public data deposit. Do not make a new release or replace the manuscript's bracketed data links until the missing arrays and source-design archives are supplied and verified.

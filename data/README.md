@@ -1,5 +1,7 @@
 # Data and regeneration assets
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 The repository includes the exact **stored design matrices** used by the paper in compressed form:
 
 `data/exact_designs/paper1_exact_designs.npz`

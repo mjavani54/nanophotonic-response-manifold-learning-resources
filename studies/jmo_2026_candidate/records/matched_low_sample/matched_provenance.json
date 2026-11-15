@@ -1,0 +1,18 @@
+{
+  "purpose": "Match the existing main-grid batch size and compare the 5k overlap.",
+  "batch_size": 1024,
+  "training_sizes": [
+    1000,
+    2000,
+    3000,
+    4000,
+    5000
+  ],
+  "epsilon_r_SiO2": 2.1316,
+  "small_zip_sha256": "019e13aa1db80110c498aafee9f0bcb2a752f6e0ce71753fa225fbe74b8f540a",
+  "material_manifest_sha256": "d6a57a5faddad99347fdc26ef6405f68f6eb9dc8f3b1a99bd9328d09c1e1e9e9",
+  "cross_results_sha256": "899e0f8c4b5072c27dece33539d8bd47ad9b58625d59a6bf2e3ec283905a5f57",
+  "low_sample_script_sha256": "d399e664c42ff4f75baafd2ac81b53433e9daa9442f4d97851a9292c8330f74c",
+  "max_absolute_5k_r2_difference": 0.0,
+  "note": "Review the per-seed differences before consolidating thresholds. GPU nondeterminism can prevent bit-for-bit equality."
+}

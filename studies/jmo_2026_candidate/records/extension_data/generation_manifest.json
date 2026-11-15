@@ -1,0 +1,64 @@
+{
+  "primary_archive_sha256": "019e13aa1db80110c498aafee9f0bcb2a752f6e0ce71753fa225fbe74b8f540a",
+  "primary_manifest_sha256": "d6a57a5faddad99347fdc26ef6405f68f6eb9dc8f3b1a99bd9328d09c1e1e9e9",
+  "source_augmented_archive_sha256": "4647a37e06bed077e104d9474d156042e33aa5befef7a4584bdd21824e15d970",
+  "generator_sha256": "c2504884553ccf4674b4468334bb78f962254d22523d6e5cf5885cacb374beee",
+  "generation_script_sha256": "632ff9fc49694ba2e026fcb5b0666938b86a5b4a68da55e2dc87c8857d2d4353",
+  "python_version": "3.14.6",
+  "numpy_version": "2.5.4",
+  "generator_status": "epsilon-only rerun of reconstruction; original Python source unknown",
+  "epsilon_r_SiO2": 2.1316,
+  "epsilon_r_TiO2": 5.913,
+  "response": "field-transmission magnitude |t|, last thickness inactive",
+  "frequency_grid_THz": [
+    250.0,
+    1050.0,
+    200
+  ],
+  "design_sampling": "independent numpy.default_rng uniform 30-70 nm",
+  "extra_per_layer": 160000,
+  "cases": {
+    "14": {
+      "seed": 2026102514,
+      "file": "extra_L14_160000.npz",
+      "file_sha256": "dcdcfb3391e4acb552dffeb97df418145cfea63ca2d9c1e89684f7d2c4828fd5",
+      "rows": 160000,
+      "response_points": 200,
+      "design_origin": "original augmented archive member: data/extra_L14_160000.npz",
+      "corrected_primary_spotcheck_mae": 9.988688328212346e-09,
+      "corrected_primary_spotcheck_max_error": 2.979633995092712e-08,
+      "source_member_sha256": {
+        "DS": "0b234b40d95507d97295a3a40a1a49d1a5e2033ccabb50e42fa0172ac8188f49",
+        "RS": "0c24c29b50cc2d5f2da063bb2979a8d6dc2f6bee402bb48f6383a79f9acc60bf"
+      }
+    },
+    "16": {
+      "seed": 2026102516,
+      "file": "extra_L16_160000.npz",
+      "file_sha256": "4b66601accd604d1bd56a0f4f274fd6b81d45b8870b6fc184bc06edfa935d9ca",
+      "rows": 160000,
+      "response_points": 200,
+      "design_origin": "original augmented archive member: data/extra_L16_160000.npz",
+      "corrected_primary_spotcheck_mae": 9.051480920509764e-09,
+      "corrected_primary_spotcheck_max_error": 2.9710027882323686e-08,
+      "source_member_sha256": {
+        "DS": "b4637e262f7e8ab451d3427443da6187b3b02768a270568252050af9a72dba41",
+        "RS": "90b164df89db4f817131b2dd5ad97a7c8ac744ec04bec35f886ba28b30638b60"
+      }
+    },
+    "18": {
+      "seed": 2026102518,
+      "file": "extra_L18_160000.npz",
+      "file_sha256": "d7898446587b682f349982848da334500ec0aa6af4485b8b0ea499a6f076f71a",
+      "rows": 160000,
+      "response_points": 200,
+      "design_origin": "original augmented archive member: data/extra_L18_160000.npz",
+      "corrected_primary_spotcheck_mae": 8.331788508787345e-09,
+      "corrected_primary_spotcheck_max_error": 2.976040325286533e-08,
+      "source_member_sha256": {
+        "DS": "0a89c52ca62f28e5cc96acb99c036ca9c1231987582fd3d27b337d87bdbd20d7",
+        "RS": "ffbe4e3e8dc1a409b26f7879a253cc3edaa9b824fcec35485a6c50b2bf06c4e2"
+      }
+    }
+  }
+}

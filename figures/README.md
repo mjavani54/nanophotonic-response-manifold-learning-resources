@@ -1,5 +1,7 @@
 # Figure provenance
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 `Figure1`, `Figure3`, `Figure4`, and `Figure5` are descriptive plots drawn from
 `../results/final_master_summary.csv` with `python scripts/plot_summary_figures.py`.
 They show operational reconstruction thresholds and first tested resource

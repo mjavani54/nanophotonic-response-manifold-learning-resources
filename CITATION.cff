@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "Cite release v1.1.0 for the original archived data and the associated ACS Photonics Article when available. The new reanalyses and extension archives accompany the Article separately."
-title: "Nanophotonic Response Manifold Learning Resources"
+message: "Cite the tagged v1.1.0 release for its archived data. The separate Journal of Modern Optics candidate is not a complete published data release yet."
+title: "Nanophotonic Response Manifold Learning Resources — Archived v1.1.0 Data"
 type: software
 authors:
   - family-names: Javani

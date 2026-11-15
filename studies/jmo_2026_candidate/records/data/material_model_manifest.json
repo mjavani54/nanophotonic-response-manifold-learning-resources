@@ -1,0 +1,99 @@
+{
+  "status": "new epsilon-corrected rerun; NOT historical archived responses",
+  "design_npz_sha256": "6e54461d14adcaf8c2dc5ab3c40c6bbca6a0b72d0a46b55a901e449216022eb2",
+  "generator_sha256": "c2504884553ccf4674b4468334bb78f962254d22523d6e5cf5885cacb374beee",
+  "epsilon_r_SiO2": 2.1316,
+  "epsilon_r_TiO2": 5.913,
+  "frequency_grid_THz": [
+    250.0,
+    1050.0,
+    200
+  ],
+  "geometry": "historical N-1 propagated thicknesses; Nth material exit medium",
+  "response": "field transmission magnitude |t|, not power transmittance",
+  "csv_format": "%.17g",
+  "cohorts": {
+    "L8_50k": {
+      "designs": [
+        8,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L10_50k": {
+      "designs": [
+        10,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L12_50k": {
+      "designs": [
+        12,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L14_50k": {
+      "designs": [
+        14,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L16_50k": {
+      "designs": [
+        16,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L18_50k": {
+      "designs": [
+        18,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L20_50k": {
+      "designs": [
+        20,
+        50000
+      ],
+      "responses": [
+        200,
+        50000
+      ]
+    },
+    "L20_200k": {
+      "designs": [
+        20,
+        200000
+      ],
+      "responses": [
+        200,
+        200000
+      ]
+    }
+  },
+  "small_zip_sha256": "019e13aa1db80110c498aafee9f0bcb2a752f6e0ce71753fa225fbe74b8f540a",
+  "extended_zip_sha256": "244ed6661af15e6f5dca5d509082869f78fe90f951adc1691399dec8a0f6ca71"
+}

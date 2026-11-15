@@ -1,5 +1,7 @@
 # Data-generation provenance
 
+**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
+
 The author reports that Python generated the analyzed multilayer labels. This repository includes an older MATLAB implementation and a later Python reconstruction, but does not identify the specific Python script originally executed. The numerical response convention below is supported by comparison with selected archived label fixtures.
 
 ## Source facts

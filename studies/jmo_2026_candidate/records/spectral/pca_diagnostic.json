@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "old_zip_sha256": "4ae7d4f906a62b1a2a25e42dbabaec1f31df293dbe9bcecb540afc88292886c9",
+    "current_zip_sha256": "019e13aa1db80110c498aafee9f0bcb2a752f6e0ce71753fa225fbe74b8f540a",
+    "primary_manifest_sha256": "d6a57a5faddad99347fdc26ef6405f68f6eb9dc8f3b1a99bd9328d09c1e1e9e9",
+    "generator_sha256": "c2504884553ccf4674b4468334bb78f962254d22523d6e5cf5885cacb374beee",
+    "pipeline_sha256": "5aff65c851ae6f1a287277b4e0e2e29f4b1a8ab6f9073fc3ac747e917c827f05",
+    "frequency_grids_THz": {
+      "narrow": [
+        350,
+        750,
+        200
+      ],
+      "wide": [
+        250,
+        1050,
+        200
+      ]
+    },
+    "split": "sklearn train_test_split 80/10/10, random_state=20260816",
+    "cases": [
+      "old_narrow",
+      "old_wide",
+      "current_narrow",
+      "current_wide"
+    ],
+    "latents": [
+      10,
+      20,
+      24,
+      30
+    ],
+    "seeds": [
+      11,
+      29,
+      47
+    ],
+    "epochs": 200,
+    "batch_size": 512,
+    "lr": 0.001,
+    "patience": 15,
+    "response": "epsilon=2.1316 field-transmission magnitude |t|; legacy last thickness inactive",
+    "data_spot_checks": {
+      "corrected_current_spotcheck_mae": 0.0,
+      "old_historical_response_csv_used": false
+    }
+  },
+  "pca": {
+    "old_narrow": {
+      "pca99_train_centered_variance": 20,
+      "heldout_global_r2_by_pca_dim": {
+        "10": 0.97264326,
+        "20": 0.997414,
+        "30": 0.99959497
+      }
+    },
+    "old_wide": {
+      "pca99_train_centered_variance": 39,
+      "heldout_global_r2_by_pca_dim": {
+        "10": 0.92996692,
+        "20": 0.97835571,
+        "30": 0.99261929
+      }
+    },
+    "current_narrow": {
+      "pca99_train_centered_variance": 20,
+      "heldout_global_r2_by_pca_dim": {
+        "10": 0.97263524,
+        "20": 0.9973671,
+        "30": 0.99957489
+      }
+    },
+    "current_wide": {
+      "pca99_train_centered_variance": 39,
+      "heldout_global_r2_by_pca_dim": {
+        "10": 0.93002047,
+        "20": 0.97817685,
+        "30": 0.9926259
+      }
+    }
+  }
+}
