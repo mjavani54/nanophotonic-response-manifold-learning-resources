@@ -1,0 +1,19 @@
+# Present-study data assets and their identity
+
+The accompanying `JMO_New_Run_Data_Bundle.zip` holds one directory, `JMO_Data_Assets/`, with the source designs, primary 50k and separate 20-layer 200k response CSV ZIPs, augmented 160k response NPZs, four 20-layer spectral-window response NPZs, manifests, and source-design checks. Its large download is delivered in ZIP parts whose order and SHA-256 values are in `DATA_PARTS.json`. Reconstruct it with `python scripts/restore_data.py /path/to/part_directory /path/to/output_directory`; do not rename or unpack the individual parts first.
+
+| Inputs in the data bundle | Status relative to the recorded new run |
+|---|---|
+| `source_designs/paper1_exact_designs.npz` | Exact source design NPZ; SHA-256 `6e54461d14adcaf8c2dc5ab3c40c6bbca6a0b72d0a46b55a901e449216022eb2` matches the material-model manifest. |
+| `source_designs/augmented_source_designs.npz` | Exact three design arrays extracted from the original 394 MB augmented source archive whose SHA-256 matches the recorded source hash. `augmented_source_provenance.json` identifies and hashes their raw array bytes. Historical response labels in that source archive are not needed or included. |
+| `source_designs/ensemble_A_designs.npy` | Exact source design array from the earlier 20-layer computational record; its NPY hash matches that record's manifest and its values exactly match the corresponding archived design CSV. Ensemble B uses the `L20_50k` key of the primary design NPZ. |
+| `primary/Datasets50k_eps21316.zip` | Rebuilt using the same source design NPZ and generator. Its overall ZIP hash differs from the recorded original, which was not supplied. The six L14/L16/L18 design and response CSV member hashes match the recorded run **exactly**. Other members are reconstructed but lack independent original member hashes. |
+| `extended/Datasets20_eps21316.zip` | Rebuilt from the exact `L20_200k` source vector set with the documented generator; original overall ZIP hash differs, and no original per-member SHA was available. |
+| `extension_data/extra_L{14,16,18}_160000.npz` | All three are byte-identical to the hashes recorded for the new run. |
+| `spectral/{A,B}_{narrow,wide}.npz` | Recalculated from exact source designs with the new-run generator. The four independent PCA99 and held-out PCA R² diagnostics match the recorded values exactly; recorded byte-level hashes of these four arrays were unavailable. |
+
+`ASSET_MANIFEST.json` gives the SHA-256 and byte size of every released file. `archive_identity.json` distinguishes the new bundle hashes from the original recorded ZIP hashes and lists the exact-match evidence. The run metadata under `records/` is kept unchanged: it correctly identifies the original training inputs, so its original ZIP SHA values are *not silently rewritten* to match these reconstructed containers. Data regenerated from documented designs and code are useful for independent reproduction, but byte identity of every original raw response remains unproven.
+
+As an additional numerical check, the reconstructed response minima and maxima for all seven 50k classes matched every value in the new run's `intrinsic/qc_summary.csv`. The separate 20-layer 200k design and response extrema matched `extended_20/learning_curve_qc.json` exactly. Matching extrema are supporting QC evidence, not an equality proof for every array element.
+
+Before making a submission data-availability claim, upload all data parts to a distinct GitHub Release, test an anonymous clean download and restoration, verify both the repository and assets, record the final release tag and URL in the manuscript and SI, and explain the reconstructed-original hash distinction in the SI. This repository/package cannot by itself confirm a publisher's decision or make the current author-review DOCX files submission-ready.

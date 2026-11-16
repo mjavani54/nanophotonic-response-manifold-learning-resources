@@ -1,34 +1,19 @@
-# Nanophotonic response manifold learning resources
+# Response compressibility and accuracy-dependent learning requirements
 
-This repository contains two **distinct numerical studies** of multilayer optical surrogates. The archived [v1.1.0 release](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) remains an exact record of its earlier data and results. The [Journal of Modern Optics candidate](studies/jmo_2026_candidate/README.md) is a separate working analysis. It is **not yet a complete public reproduction deposit** or a published version of the paper.
+This repository is a **fresh present-study resource** for the working Journal of Modern Optics article *Response Compressibility and Accuracy-Dependent Learning Requirements for Multilayer Optical Surrogates*. It contains the new run's analysis-code snapshot, recorded neural-fit outputs, manuscript-aligned tables, and six figures. It has no earlier-paper root results or figures. The prior numerical study remains accessible through the repository's [v1.1.0 historical tag](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0), which uses a different response model.
 
-| Scope | Tagged v1.1.0 archive | Journal of Modern Optics candidate |
-|---|---|---|
-| SiO₂ relative permittivity in response calculation | 1.46 | 2.1316 |
-| TiO₂ relative permittivity | 5.913 | 5.913 |
-| Shared source design matrices | `data/exact_designs/paper1_exact_designs.npz` | The same primary design vectors; additional design-source cohorts are identified in the new metadata |
-| Numerical results | Root `results/` and `figures/`; exact response CSVs are v1.1.0 release assets | `studies/jmo_2026_candidate/records/` and its separate figures |
-| Exact complete study response arrays | Archived arrays are public in v1.1.0 | **Not deposited here yet** |
+The source designs and reconstructed response matrices are provided in the separately packaged JMO data assets described in [DATA_ASSETS.md](docs/DATA_ASSETS.md). The new run used nominal εᵣ(SiO₂)=2.1316 and εᵣ(TiO₂)=5.913, 200 sampled frequencies, and field-transmission magnitude |t|. The transfer calculation propagates only N−1 of N stored thicknesses and takes material N as the exit medium. It is a constant-material, idealized target, **not** finite-stack power transmittance into air. The 20-layer AE threshold of 30 is an operational reconstruction threshold, not a physical manifold dimension.
 
-Do not combine tables, response arrays, or code paths from the two columns. In particular, the old `results/` CSVs, root `figures/`, root `code/`, and `data_generation/generate_legacy_multilayer.py` describe the archived model and **do not reproduce the candidate paper's numerical values**. The folder `studies/jmo_2026_candidate/source/` contains the code snapshot used for the candidate analysis and documents the distinct material parameter.
+At mean held-out R² ≥ 0.99, the tested autoencoder bottlenecks for nominal 8–20 layers are 6, 7, 9, 12, 14, 20, and 30. The primary learning grid first reaches mean forward test R² ≥ 0.99 at ≤1,000, ≤1,000, 2,000, 4,000, 10,000, 15,000, and 25,000 training examples. The fixed-50,000-design 20-layer capacity point is unresolved through 5,202,120 parameters. A separate 20-layer curve first reaches 0.99/0.995/0.999 at 30,000/50,000/75,000 examples. Widening the spectral grid from 350–750 to 250–1050 THz on each of two 20-layer design ensembles moves the first tested AE bottleneck at R² ≥ 0.99 from 10 to 30. The seven related layer classes give identical rank order for layer count and compression descriptors, so these data do **not** establish an independent predictive effect of compression or a universal photonics scaling law.
 
-The candidate paper studies seven nominal layer counts (8–20) and reports first **tested** resource thresholds under specified architectures and R² criteria. Its initial autoencoder bottleneck at mean held-out R² ≥ 0.99 runs from 6 to 30; first primary-grid training sizes at mean forward test R² ≥ 0.99 range from ≤1,000 to 25,000. Its 20-layer capacity threshold on the fixed 50,000-design cohort is unresolved through 5,202,120 parameters. Two source-design ensembles test 350–750 versus 250–1050 THz spectral windows. Layer count and compression descriptors have identical class ranks, so the associations do not establish an independent predictive effect of compression. These are findings for the implemented model, not a universal physical sample-complexity law.
+| Area | Contents |
+|---|---|
+| `source/` | Original code snapshot from the new numerical run, including generator, analysis, and training scripts; its own checksum manifest is preserved. |
+| `records/` | Both recorded fit archives, per-seed and summary CSVs, material and experiment metadata. The early batch-512 low-sample run is retained for provenance but excluded from the manuscript tables; the matched batch-1,024 records are separate. |
+| `tables/` | Article Tables I and II transcribed from the current author working manuscript, with source checks in `verify_summary.py`. |
+| `figures/` | Six current manuscript figures, including the six observed capacity crossings only. |
+| `docs/` | Input identity, validation, interpretation, and public-deposit instructions. |
 
-Both calculations use a 200-point frequency grid at normal incidence, constant real material parameters, and the **field-transmission magnitude** `|t|` as the label. The last sampled thickness is inactive because the implemented transfer calculation propagates N−1 thicknesses and uses material N as the exit medium. Neither model is a closed finite stack into air or flux-normalized power transmittance. Full methods and remaining data gaps are in the [candidate-study README](studies/jmo_2026_candidate/README.md) and [current-study deposit status](docs/CURRENT_STUDY_STATUS.md).
+The first three augmented-cohort NPZs in the accompanying data bundle are **byte-identical to the new run's recorded hashes**. Six known primary design/response CSV members also match the recorded hashes exactly. The reconstructed primary and 200k ZIP containers have SHA-256 values different from the original run inputs; the original containers were not supplied. All four spectral-array PCA diagnostics match the recorded values, but those arrays lack recorded byte-level hashes. See [DATA_ASSETS.md](docs/DATA_ASSETS.md) for the precise verification boundary.
 
-## Integrity and status
-
-`CHECKSUMS.sha256` covers the tracked checkout and the added candidate-study files (except the manifest itself). From the repository root:
-
-```bash
-sha256sum -c CHECKSUMS.sha256
-python scripts/verify_repository.py
-```
-
-The verifier checks file integrity, selected v1.1.0 fixtures, and candidate-study **summary consistency**. It cannot certify full regeneration of the current analyses without the missing response matrices and source-design archives.
-
-## Citing the work
-
-Cite the tagged [v1.1.0 release](https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0) for archived inputs and frozen outputs. The candidate paper and its complete present-study deposit need their own verified public identifiers before a data-availability statement can identify them as complete. `CITATION.cff` currently points to the archived release.
-
-Code is under the MIT license. The manuscript and Supporting Information are separate working documents and are not presented here as accepted or published articles.
+Run `python verify_summary.py` for tables and fit-record checks, then `python scripts/verify_package.py --data /path/to/JMO_Data_Assets` after restoring the data bundle. These checks do not rerun the hundreds of neural fits. The data release and a final manuscript data-availability URL must be published and tested separately. **Do not cite this main branch or the historical v1.1.0 data as a complete public deposit for the new article before that is done.**

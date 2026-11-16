@@ -1,0 +1,46 @@
+{
+  "primary_sha256": "019e13aa1db80110c498aafee9f0bcb2a752f6e0ce71753fa225fbe74b8f540a",
+  "primary_manifest_sha256": "d6a57a5faddad99347fdc26ef6405f68f6eb9dc8f3b1a99bd9328d09c1e1e9e9",
+  "generation_manifest_sha256": "173da2d8a24bd941d0d658c408bab30e54aa1fbbb8f66673ace70d6e397eec80",
+  "pipeline_sha256": "97885494d8bb7807d9ca03089c7972709e9a803e03e996787b18b5b1241790c4",
+  "reference_sha256": "244458468dd22572ed401f0b6342c2ce7e2307c5b80bee7b488e82672e748a05",
+  "layers": [
+    14,
+    16,
+    18
+  ],
+  "sizes": [
+    40000,
+    50000,
+    60000,
+    80000,
+    100000,
+    120000,
+    160000,
+    200000
+  ],
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "widths": {
+    "14": 128,
+    "16": 256,
+    "18": 448
+  },
+  "depth": 4,
+  "train_size_original": 40000,
+  "val_size_original": 5000,
+  "test_size_original": 5000,
+  "batch_size": 1024,
+  "max_epochs": 1200,
+  "patience": 100,
+  "lr": 0.001,
+  "baseline_tolerance": 0.0002,
+  "torch_version": "2.15.0+cu132",
+  "numpy_version": "2.5.4",
+  "pandas_version": "3.1.1",
+  "device": "cuda",
+  "source_note": "epsilon=2.1316 primary and relabeled extra designs, legacy N-1 thickness geometry"
+}

@@ -1,0 +1,74 @@
+{
+  "archive_identity.json": {
+    "bytes": 2181,
+    "sha256": "ca6ac6ce5295e4ea4cbb16188ee8260ef9ce90f92e5973452bbc3c7e9fa4f143"
+  },
+  "extended/Datasets20_eps21316.zip": {
+    "bytes": 396624025,
+    "sha256": "7e836a3d11704aa8f1e551c0c9deca6413689899af0a68191d8679c008ab1d75"
+  },
+  "extension_data/extra_L14_160000.npz": {
+    "bytes": 127876671,
+    "sha256": "dcdcfb3391e4acb552dffeb97df418145cfea63ca2d9c1e89684f7d2c4828fd5"
+  },
+  "extension_data/extra_L16_160000.npz": {
+    "bytes": 130497927,
+    "sha256": "4b66601accd604d1bd56a0f4f274fd6b81d45b8870b6fc184bc06edfa935d9ca"
+  },
+  "extension_data/extra_L18_160000.npz": {
+    "bytes": 133027176,
+    "sha256": "d7898446587b682f349982848da334500ec0aa6af4485b8b0ea499a6f076f71a"
+  },
+  "extension_data/generation_manifest.json": {
+    "bytes": 2896,
+    "sha256": "d057dac1bc82017dd1090c6ba26402115634552a05fa49668b2faa9892d5768d"
+  },
+  "material_model_manifest.json": {
+    "bytes": 1847,
+    "sha256": "61767cdb54b06c2056923bce5fd7fcab19953f2d8c8cf8d0907aa4f421331c76"
+  },
+  "primary/Datasets50k_eps21316.zip": {
+    "bytes": 671158860,
+    "sha256": "2e7dc3fba0e16e151e2862ca6aa4532f05ed0d175c2a6be6e93783fd4e82e869"
+  },
+  "source_designs/augmented_source_designs.npz": {
+    "bytes": 57446796,
+    "sha256": "e4c5f1ad7a61d68cd730ce3f44dbc2dee237a56ea2841b74303998720d7758e5"
+  },
+  "source_designs/augmented_source_provenance.json": {
+    "bytes": 965,
+    "sha256": "4467da121dfae1b994ff1c4e92654750537d36f5a0eb900a0d1dceaeeb59b426"
+  },
+  "source_designs/ensemble_A_designs.npy": {
+    "bytes": 8000128,
+    "sha256": "76ae2f41e04b4d8f634e92e5285c957cd47addd394015a7ad97aa26ed1aa6eff"
+  },
+  "source_designs/paper1_exact_designs.npz": {
+    "bytes": 28812643,
+    "sha256": "6e54461d14adcaf8c2dc5ab3c40c6bbca6a0b72d0a46b55a901e449216022eb2"
+  },
+  "spectral/A_narrow.npz": {
+    "bytes": 34986989,
+    "sha256": "f60a98f03d0b902e7651d653ffd4e274db01a142c6e89689a4190e3930d19d58"
+  },
+  "spectral/A_wide.npz": {
+    "bytes": 34960441,
+    "sha256": "cb16ef22886c088880e73db18d66d92ad7b8670c02affa6fb6e8593112eb1b7e"
+  },
+  "spectral/B_narrow.npz": {
+    "bytes": 34989295,
+    "sha256": "b2c7a8e392fc26e4f13916451df754d99a02642d758858c0729dc8726bc4eafb"
+  },
+  "spectral/B_wide.npz": {
+    "bytes": 34961268,
+    "sha256": "1e272dc2dba0aea1deac49ab526f59ecd44464fe1cde758f37407087130bfb72"
+  },
+  "spectral/pca_reconstruction_check.json": {
+    "bytes": 1185,
+    "sha256": "a0ec1cf3a91b6f236c14095f110b66d0ae397e45d86732e4bc4c7bf3cda5916e"
+  },
+  "spectral/reconstruction_manifest.json": {
+    "bytes": 1831,
+    "sha256": "5f64ff5a4502e958af737e80b46b8e125369d129bbe8a9823ac01c85b72789ca"
+  }
+}

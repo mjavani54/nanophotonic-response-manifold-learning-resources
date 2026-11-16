@@ -1,0 +1,9 @@
+# Mapping the article to recorded results
+
+Article Table I is in `tables/article_table_1.csv`; its AE99 and PCA99/participation-ratio values are from `records/intrinsic/paper1_master_summary.csv`. The 8/10/12-layer parameter values come from that master table; the final 14/16/18-layer parameter crossings are from `records/capacity/capacity_diagnostic_decision.csv`. The 20-layer fixed-50k capacity point is right-censored at 5,202,120 parameters and must not be plotted as an observed crossing. Article Table II is in `tables/article_table_2.csv`, based on the 72-row `records/primary_learning_curves.csv`, `records/primary_thresholds.csv`, and `records/extension_run/extended_summary.csv`.
+
+The low-sample 1,000–4,000 points and 5,000–40,000 primary grid use batch 1,024. The 12 paired 5,000-example per-seed scores agree exactly in `records/matched_low_sample/paired_5k_check.csv`; the older batch-512 component inside `records/run_records_review.zip` is not used in the article tables.
+
+The separate 20-layer extended curve is in `records/extended_20/learning_curve_summary.csv`. The spectral-window experiment reports 48 AE fits in `records/spectral/ae_results.csv`, a 16-row four-by-four summary in `records/spectral/ae_summary.csv`, and PCA diagnostics in `records/spectral/pca_diagnostic.json`. Its internal case labels `old` and `current` are **source-design ensemble IDs A and B**; all four *recalculated* response arrays use the same 2.1316 numerical model. No historical response labels enter this comparison.
+
+The reported correlations on only six or seven related layer classes are exploratory and unadjusted. Layer count has the same rank ordering as the compression descriptors; the result is an association within the implemented family and protocol, not an independent predictor or a physical law.

@@ -1,12 +1,9 @@
 cff-version: 1.2.0
-message: "Cite the tagged v1.1.0 release for its archived data. The separate Journal of Modern Optics candidate is not a complete published data release yet."
-title: "Nanophotonic Response Manifold Learning Resources — Archived v1.1.0 Data"
-type: software
+message: "Cite a separately tagged and verified release of these JMO candidate data and code. The earlier v1.1.0 tag is a different numerical study."
+title: "Response Compressibility and Accuracy-Dependent Learning Requirements for Multilayer Optical Surrogates: Data and Code"
+type: dataset
 authors:
   - family-names: Javani
     given-names: Mohammad H.
-version: 1.1.0
-date-released: 2026-10-12
 repository-code: "https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources"
-url: "https://github.com/mjavani54/nanophotonic-response-manifold-learning-resources/releases/tag/v1.1.0"
 license: MIT

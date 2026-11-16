@@ -1,0 +1,70 @@
+{
+  "data_bundle_filename": "JMO_New_Run_Data_Bundle.zip",
+  "data_bundle_bytes": 1693359438,
+  "data_bundle_sha256": "ce4652d93fa50feb0ae4c701b2b3fa915be33d22e8dc16b6b0dfb66077232783",
+  "parts": [
+    {
+      "name": "JMO_New_Run_Data_part_01_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "2385fdaa65ff68ac8a4c74c8b0a817f06bb9ae2c9ffb086698bc343ec8aaddb5",
+      "payload_sha256": "d163892106f031b1e21ea2c469907c5f327769a2e9fe2a10c0c6c7a2fe895481",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_02_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "097257519eda4a18bcf206ed8aec3632cc3c837161ac7edb9f5c654d7fab231d",
+      "payload_sha256": "0501831915d6cbec0865f42fed6479b3951db29e8d2ed568e8217118979c78a3",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_03_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "082f27bd45aa372d585690fd4993478705bb00ef8ff2b7bd94862d850c1fdc44",
+      "payload_sha256": "2f409598592f6afc2f768d8bb312c7ed8db09c1a9ce564808bab2425002dbcf7",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_04_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "bee9d3ea3992fc1201f0b3237faf7538ddce4eff2f7df20524bc9ca5691bea1e",
+      "payload_sha256": "d355660961205558cfec378e4e7eea4317e18ca4446bbc5502e0cd3bc0dc3d63",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_05_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "df9fcf4d1483f23d9711989c90d830a94b8b413509e7b7b64ebd32ec5c6fef11",
+      "payload_sha256": "394cdfded8da47dd00f838749b269dddefdf9c78a4129d884198e96003a74612",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_06_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "fbf0203dbf8b12878ba43e24fe799ea0e462c00ef3e5fc51014cd100ef82fde5",
+      "payload_sha256": "1306958a1cbb87ed5758af2da13bcc9abf0bb2259cd242de77fea6922ec4d9c2",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_07_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "a8e9417699488ef6699d4b3f780acd352f69444a60040dadf4e208c05cdcd9c1",
+      "payload_sha256": "03f1d6baa17d6fdfe288cce9d05ec0d2fd33680582b9952b8474c54b7ce495b6",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_08_of_09.zip",
+      "bytes": 209715563,
+      "sha256": "b7daae9e659213164aecbd0eef9de7be5fc7d1e379520220459d3cd41c36ef30",
+      "payload_sha256": "087fe0cb739aff6c075cff120579b1abf45217e16da280c58a83f83bfc41ed5c",
+      "payload_bytes": 209715200
+    },
+    {
+      "name": "JMO_New_Run_Data_part_09_of_09.zip",
+      "bytes": 15638200,
+      "sha256": "4ea6b586c9807cf598d13bf6d4bd2f29851f7b1f23793eee76886bfe36e71245",
+      "payload_sha256": "2b45efbbd6dba9fc1cb4991539973f1ecbc99ca3e620a6336cbecafefc81929d",
+      "payload_bytes": 15637838
+    }
+  ]
+}

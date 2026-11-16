@@ -1,0 +1,8 @@
+nominal_layers,primary_r2_ge_099,primary_r2_ge_0995,primary_r2_ge_0999,augmented_extension_r2_ge_0999
+8,"≤1,000","≤1,000","3,000",Not tested
+10,"≤1,000","2,000","10,000",Not tested
+12,"2,000","3,000","15,000",Not tested
+14,"4,000","10,000",Not reached,"50,000"
+16,"10,000","10,000","30,000","40,000 baseline"
+18,"15,000","20,000",Not reached,"50,000"
+20,"25,000","35,000",Not reached,Not tested

@@ -1,73 +1,16 @@
-# Reproducibility workflow
+# Commands after restoring the JMO data bundle
 
-**Scope: archived v1.1.0 only.** The commands, material parameter 1.46, figures, and numerical endpoints below belong to the frozen archival analysis, not to the current candidate paper. See [the separate current study](../studies/jmo_2026_candidate/README.md).
-
-## 0. Verify the dataset generator
+Use Python 3 with `source/requirements.txt` in an environment that supports NumPy, SciPy, scikit-learn, pandas, matplotlib, and PyTorch. The source snapshot preserves the actual scripts, split recipes, fit grids, and metadata. Its original README discusses how the current response model differs from earlier archived calculations; this repository's root README is the current index.
 
 ```bash
-python data_generation/validate_legacy_generator.py
+python scripts/restore_data.py "/path/to/downloaded_parts" "/path/to/data_output"
+python scripts/verify_package.py --data "/path/to/data_output/JMO_Data_Assets"
+python verify_summary.py "/path/to/data_output/JMO_Data_Assets"
+bash source/run.sh verify
 ```
 
-An older MATLAB reference and a Python reconstruction are included under `data_generation/`. The author reports Python generated the original data; the specific original Python source has not yet been identified in this repository. Fixture checks are limited to selected archived label columns.
+The original `source/run.sh` can rerun intrinsic, cross-structure, capacity, optimization, and extended 20-layer fits against the *reconstructed bundle* by using `primary/Datasets50k_eps21316.zip`, `extended/Datasets20_eps21316.zip`, and the root `material_model_manifest.json` inside `JMO_Data_Assets/`. It verifies these present ZIP hashes. Long neural fits may not reproduce bit-for-bit on a different GPU/software stack; report validation with the per-seed CSVs.
 
-## 1. Recalculate response labels from stored designs
+The three supplied augmented NPZs exactly match the recorded hashes. To regenerate them from only the compact source designs, run `python scripts/reproduce_augmentation.py ASSET_DIR OUTPUT_DIR`; it fails if any output hash differs. To regenerate the four spectral input arrays from the two supplied design ensembles, run `python scripts/reproduce_spectral.py ASSET_DIR OUTPUT_DIR`; it verifies current bundle hashes. The original `source/analysis/compare_ae_bands.py` expects a historical design ZIP container that was not supplied in exactly the recorded form. Use the included design-source and generated spectral-array checks instead of substituting old response labels.
 
-The exact stored design matrices used in the study are included under `data/exact_designs/`.
-
-Example:
-
-```bash
-python data_generation/generate_legacy_multilayer.py   --design-npz data/exact_designs/paper1_exact_designs.npz   --key L8_50k   --out-dir generated/L8
-```
-
-Repeat with the keys listed in `data/README.md`, or use `data_generation/build_paper_datasets.py` to construct full 50k and extended 20-layer archives. These regenerated outputs can differ numerically from the exact response CSVs used in the paper. Download the archived inputs from release v1.1.0 to reproduce the reported frozen analyses exactly.
-
-## 2. Response-complexity analyses
-
-```bash
-python code/paper1_intrinsic_dimensionality_pipeline_fixed.py   --zip generated/Datasets50k_regenerated.zip   --mode full
-```
-
-## 3. Targeted high-capacity diagnostic
-
-```bash
-python code/paper1_high_capacity_diagnostic.py   --zip generated/Datasets50k_regenerated.zip   --out paper1_capacity_diagnostic
-```
-
-## 4. 20-layer optimization diagnostic
-
-```bash
-python code/paper1_20layer_optimization_diagnostic.py   --zip generated/Datasets50k_regenerated.zip   --out paper1_20layer_optimization
-```
-
-## 5. Extended 20-layer 200k learning curve
-
-```bash
-python code/paper1_20layer_200k_learning_curve.py   --zip generated/Datasets20_regenerated.zip   --out paper1_20layer_200k_learning_curve
-```
-
-## 6. Controlled cross-structure learning curves
-
-```bash
-python code/paper1_cross_structure_learning_curves_fixed.py   --zip-small generated/Datasets50k_regenerated.zip   --zip-20 generated/Datasets20_regenerated.zip   --out paper1_cross_structure_learning_curves
-```
-
-## 7. Low-sample refinement
-
-```bash
-python code/paper1_low_sample_refinement.py   --zip-small generated/Datasets50k_regenerated.zip   --out paper1_low_sample_refinement
-```
-
-## 8. Frozen final outputs
-
-The paper-level consolidated CSV files are under `results/`. They are the frozen statistics reported in the manuscript. The exact archived design and response CSV inputs needed to rerun the same analyses are assets of release v1.1.0.
-
-## Reproducibility conventions
-
-- Three training seeds are used in the final neural-learning experiments.
-- Validation and test sets remain held out from model fitting.
-- Standardization statistics are estimated from the current training subset only in the controlled learning-curve experiments.
-- Training subsets are nested within seed-specific permutations.
-- Resource thresholds are discrete-grid **minimum tested** values.
-- 8L and 10L sample thresholds are left-censored at 1,000 samples.
-- 20L fixed-50k capacity threshold is right-censored and excluded from the capacity-correlation fit.
+`python source/data_generation/build_paper_datasets.py --design-npz ASSET_DIR/source_designs/paper1_exact_designs.npz --out-dir YOUR_FRESH_OUTPUT_DIR` reconstructs the primary and 200k CSV ZIPs. Their ZIP-container hashes may differ because the original container bytes are unavailable. Verify known CSV-member SHA values and documented QC before comparing results. Do not overwrite the recorded metadata files under `records/`.
